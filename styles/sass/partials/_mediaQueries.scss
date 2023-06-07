@@ -1,0 +1,183 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+@media (max-width: 940px) {
+    .sectionHeading p {
+        width: 85%;
+    }
+    .shop .productGallery li {
+        max-width: 32%;
+    }
+    .hide {
+        display: none;
+    }
+    .contact .wrapper {
+        height: 100%;
+        flex-direction: column;
+        .textContainer {
+            @include boxModel(80%, auto, none, none, none, 0 auto);
+        }
+    }
+    footer .wrapper {
+        flex-wrap: wrap;
+        .footerCol {
+            width: 32%;
+        }
+        .fourth {
+            @include colors($plantGreen, $white, none);
+            @include boxModel(100%, auto, 2rem, none, 4px, 3rem 0 0 0);
+                h3 {
+                    border-bottom: 1px solid $white;
+                    padding-bottom: 1rem;
+                    text-align: center;
+                }
+                .division {
+                    padding-top: 1rem;
+                    align-items: center;
+                    p {
+                    padding: 1rem 0;
+                    text-align: center;
+                    }
+                    form {
+                    width: 80%;
+                    margin-bottom: 1rem;
+                        input[type=text]::placeholder {
+                            text-align: center;
+                        }
+                    }
+                }
+            }   
+        }
+    }
+
+@media (max-width: 768px) {
+    header .navHide{
+        display: none;
+    }
+
+    header nav .wrapper .hamburgerContainer {
+        display: block;
+        order: -1;  
+    }   
+
+    .hero .wrapper {
+        flex-direction: column;        
+        padding: 1rem;
+        .textContainer {
+            @include boxModel(100%, auto, 1.5rem 0 0 0, none, none, 0);
+            text-align: center;
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        .imageContainer {
+            order: -1;
+        }
+    }
+
+    .about .wrapper {
+        flex-direction: column;
+        .aboutText,
+        .factContainer {
+            width: 100%;
+        }
+        .aboutText {
+            order: 1;
+            padding-top: 5rem;
+        }
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .sectionHeading p {
+        width: 100%;
+        padding: 1rem 1rem 2rem 1rem;
+    }
+
+    .shop .productGallery li {
+        max-width: 48%;
+    }
+
+    .blog .wrapper ul {
+        flex-direction: column;
+        li {
+            width: 95%;
+            margin: 1rem 0;
+        }
+    }
+
+    footer .wrapper .footerCol {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hide768px {
+        display: none;
+    } 
+
+    footer .first {
+        margin: 0 auto;
+        padding: 0;
+        .imageContainer {
+            margin: 0 auto;
+            width: 25%;
+        }
+        .division {
+            align-items: center;
+            li {
+                margin: 0.5rem;
+                .svg {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    footer .second {
+        height: 60%;
+        padding: 0;
+        h3 {
+            border-top: 4px solid $plantGreen;
+            padding-top: 3.5rem;
+        }
+        nav ul {
+            align-items: center;
+            li {
+                padding: 0.5rem 0;
+            }
+        }
+        .division {
+            align-items: center;            
+        }
+    }
+
+    .line1and2 {
+        flex-direction: column;
+    }
+
+    .contact .wrapper form .line1and2 input[type=text] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .shop .productGallery li {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-bottom: 2rem;
+    }
+
+    .contact .wrapper .contactContainer li {
+        padding: 1rem;
+    }
+
+    .contact form {
+        padding: 1.5rem;
+        button {
+            padding: 1rem 1.5rem;
+            font-size: 0.75rem;
+        }
+    }
+}

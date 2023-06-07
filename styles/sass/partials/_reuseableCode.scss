@@ -1,0 +1,124 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+//generic styles//
+html {
+    @include fontStyling($primaryFont, 18px, 400);
+    color: $black;
+}
+
+//reusable code//
+.wrapper {
+    max-width: 1200px;
+    @include boxModel(90%, auto, 5rem 0, none, none, 0 auto);
+}
+
+body, 
+h1, 
+h2, 
+h3, 
+h4, 
+ul, 
+p {
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    @include fontStyling($secondaryFont, 1.75rem, 700);
+    @include textStyling (0, 2rem, uppercase, none);
+}
+
+h3 {
+    @include fontStyling($secondaryFont, 1.1rem, 600);
+    @include textStyling (0.025rem, 1.5rem, 0, none);
+}
+
+p {
+    line-height: 1.6rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $black;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.svg {
+    @include boxModel(1.75rem, 1.75rem, 0.5rem, none, 2rem, 0 0 1rem 0);
+    @include colors($plantGreen, 0, none);
+    transition: all 0.25s;
+    object-fit: contain;
+    &:hover {
+        background-color: $lightgreen;
+    }
+}
+
+.sectionHeading {
+    text-align: center;
+}
+
+.sectionHeading p {
+    @include boxModel(60%, auto, 2.5rem, none, none, 0 auto);
+}
+
+.division {
+    @include flexStyle(flex, column, space-between, flex-start);
+    height: 80%;
+}
+
+button {
+    @include colors($plantGreen, $white, 0 0 3px rgba(0, 0, 0, 0.3));
+    @include boxModel(auto, auto, 0.75rem, none, 0.75rem, none);
+    @include fontStyling($primaryFont, 0.8rem, 400);
+    @include textStyling(0.05rem, 0, capitalize, none);
+}
+
+button:hover {
+    background-color: $lightgreen;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+
+// reference for logo filter: https://codepen.io/sosuke/pen/Pjoqqp 
+.logo {
+    filter: invert(24%) sepia(77%) saturate(4208%) hue-rotate(79deg) brightness(50%) contrast(101%); 
+}
+
+.btnVar2 {
+    @include boxModel(auto, auto, 1rem, 0, 1rem, 0);
+    @include fontStyling($primaryFont, 0.9rem, 500);
+    @include textStyling (0, 0, uppercase, none);
+}
+
+.btnVar3 {
+    @include boxModel(auto, auto, 1.25rem, 0, 1.5rem, 0.3rem);
+    @include fontStyling(0, 0.9rem, 400);
+}
+
+.btnVar4 {
+    @include boxModel(auto, auto, 1.6rem 2rem, 0, 2.25rem, 1rem 0 0 0);
+    @include fontStyling(0, 0.9rem, 600);
+}
+
+.price {
+    color: $plantGreen;
+    font-weight: 600;
+}
+
+.flexRow {
+    @include flexStyle(flex, row, space-between, center);
+}
+
+.flexColumn {
+    @include flexStyle(flex, column, space-between, center);
+}

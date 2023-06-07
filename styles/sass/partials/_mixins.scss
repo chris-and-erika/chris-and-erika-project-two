@@ -1,0 +1,40 @@
+@mixin flexStyle($display, $flexDirection, $justifyContent, $alignItems) {
+    display: $display;
+    flex-direction: $flexDirection;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+@mixin boxModel($width, $height, $padding, $border, $bRadius, $margin) {
+    width: $width;
+    height: $height;
+    padding: $padding;
+    border: $border;
+    border-radius: $bRadius;
+    margin: $margin;
+}
+
+@mixin colors($bgColor, $color, $boxShadow) {
+    background-color: $bgColor;
+    color: $color;
+    box-shadow: $boxShadow;
+}
+
+@mixin fontStyling($fontFamily, $fontSize, $fontWeight) {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+}
+
+@mixin textStyling($letterSpacing, $lineHeight, $textTransform, $textDeco) {
+    letter-spacing: $letterSpacing;
+    line-height: $lineHeight;
+    text-transform: $textTransform;
+    text-decoration: $textDeco
+}
+
+@mixin bgImgStyling($bgPosition, $bgSize, $bgRepeat) {
+    background-position: $bgPosition;
+    background-size: $bgSize;
+    background-repeat: $bgRepeat;
+}

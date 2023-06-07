@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/cdc49ed55f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Organic | Juno College Project One</title>
+    <link href="./styles/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- beginning of header section -->
+    <header class="contactHeader">
+        <nav class="flexRow">
+            <div class="wrapper flexRow">
+                <a href="./index.html">
+                    <img class="logo" src="./assets/logo-white.png" alt="Oreg logo.">
+                </a>
+                <ul class="flexRow">
+                    <li class="navHover navHide">
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li class="navHover navHide">
+                        <a href="./index.html#blog">Blog</a>
+                    </li>
+                    <li class="navHover navHide">
+                        <a class="active" href="./contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <img class="svg" src="./assets/icons/cart.svg" alt="Oreg shopping cart.">
+                    </li>
+                </ul>
+                <a class="hamburgerContainer" href="#">
+                    <i class="fa-solid fa-bars hamburger"></i>
+                </a>
+            </div>
+        </nav>
+        <div class="contactBanner"></div>
+        <h2>Contact Us</h2>    
+    </header>
+    <!-- end of header section -->
+
+    <!-- beginning of main section-->
+    <main>
+        <!-- beginning of contact section -->
+        <section id="contact" class="contact">
+            <div class="wrapper flexRow">
+                <ul class="textContainer contactContainer">
+                    <li>
+                        <h3>Office address</h3>
+                        <p>3812 Lena Lane City Jackson Mississippi</p>
+                    </li>
+                    <li>
+                        <h3>Phone number </h3>
+                        <p>601-594-3405</p>
+                    </li>
+                    <li>
+                        <h3>Email</h3>
+                        <p>4cfdx9dye9e@temporary-mail.net</p>
+                    </li>
+                </ul>
+                <div class="textContainer">
+                    <form action="#" method="#" name="contactForm">
+                        <div class="line1and2 flexRow">
+                            <label for="name" class="sr-only">Enter your name</label>
+                            <input type="text" id="name" class="name" name="name" placeholder="Your full name*" required>
+                            <label for="email" class="sr-only">Enter your email</label>
+                            <input type="text" id="email" class="email" name="email" placeholder="Your email address*" required>
+                            <label for="phone" class="sr-only">Enter your phone number</label>
+                            <input type="text" id="phone" class="phone" name="phone" placeholder="Your phone number">
+                            <label for="website" class="sr-only">Enter your website</label>
+                            <input type="text" id="website" class="website" name="website" placeholder="Your website link">
+                        </div>
+                        <div class="line3">
+                            <label for="subject" class="sr-only">Enter message subject</label>
+                            <input type="text" id="subject" class="subject" name="subject" placeholder="Subject...">
+                        </div>
+                        <div class="line4">
+                            <label for="mesages" class="sr-only">Enter message</label>
+                            <textarea name="userMessage" id="message" class="message" cols="55" rows="8" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit">Send message</button>
+                    </form>
+                <div>
+            </div>
+        </section>
+        <!-- end of contact section -->
+    </main>
+    <!-- end of main section -->
+
+    <!-- beginning of footer section -->
+    <footer>
+        <div class="wrapper flexRow">
+            <div class="footerCol first">
+                <div class="imageContainer">
+                    <img class="logo" src="./assets/logo-white.png" alt="Oreg logo.">
+                </div>
+                <div class="division">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum amet a non sapiente perspiciatis. Dignissimos amet quidem modi sapiente!</p>
+                    <nav>
+                        <ul class="flexRow">
+                            <li>
+                                <a href="#">
+                                    <img class="svg" src="./assets/icons/facebook.svg" alt="facebook icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="svg" src="./assets/icons/instagram.svg" alt="instagram icon">                         
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                   <img class="svg" src="./assets/icons/youtube.svg" alt="youtube icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="svg" src="./assets/icons/twitter.svg" alt="twitter icon">
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="footerCol second">
+                <h3>Quick links</h3>
+                <nav class="division">
+                    <ul class="flexColumn">
+                        <li>
+                            <a href="./index.html#about">About us</a>
+                        </li>
+                        <li>
+                            <a href="./index.html#shop">Our product</a>
+                        </li>
+                        <li>
+                            <a href="./index.html#blog">Our blog</a>
+                        </li>
+                        <li>
+                            <a href="./contact.html">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#">Become a member</a>
+                        </li>
+                        <li>
+                            <a href="#">Case studies</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footerCol third hide768px">
+                <h3>Recent products</h3>
+                <ul class="division">
+                    <li class="flexRow">
+                        <div class="imageContainer">
+                            <img src="./assets/product8.jpeg" alt="Organic Boston lettuce.">
+                        </div>
+                        <div class="textContainer">
+                            <p class="item">Fresh vegetable</p>
+                            <p class="price">$13</p>
+                        </div>
+                    </li>
+                    <li class="flexRow">
+                        <div class="imageContainer">
+                            <img src="./assets/product7.jpeg" alt="Organic green cabbage.">
+                        </div>
+                        <div class="textContainer">
+                            <p class="item">Fresh fruit</p>
+                            <p class="price">$13</p>
+                        </div>
+                    </li>
+                    <li class="flexRow">
+                        <div class="imageContainer">
+                            <img src="./assets/product5.jpeg" alt="Organic snap peas.">
+                        </div>
+                        <div class="textContainer">
+                            <p class="item">Fresh bean</p>
+                            <p class="price">$13</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footerCol fourth">
+                <h3>Subscribe</h3>
+                <div class="division">
+                    <h4>Address:</h4>
+                    <p>5919 Trussville Crossings Pkwy, <br> Birmingham AL 35235</p>
+                    <h4>Phone:</h4>
+                    <p>+88016888005654</p>
+                    <form action="#" method="#" name="subscribeForm">
+                        <label for="email" class="sr-only">Enter email to subscribe</label>
+                        <input type="text" id="email" class="email" name="email" placeholder="Enter Email...">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footerImage">
+            <img src="./assets/cow.png" alt="Cows on a field.">
+        </div>
+        <p class="copyright">Coded by <a href="#">Erika David</a>. Copyright &#169 <a href="https://www.junocollege.com" target="_blank">Juno College</a>. All rights reserved.</p>
+    </footer>
+    <!-- end of footer section -->
+</body>
+</html>

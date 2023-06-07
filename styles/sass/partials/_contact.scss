@@ -1,0 +1,74 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+//header section//
+.contactHeader {
+    height: 100%;
+    .contactBanner {
+        background-image: url(../assets/contact.jpg);
+        @include bgImgStyling(center, cover, no-repeat);
+        @include flexStyle(flex, row, center, center);
+        filter: brightness(70%);
+        height: 45vh;
+        position: relative;
+        z-index: -1;
+    }
+    h2 {
+        color: $white;
+        text-transform: capitalize;
+        @include fontStyling(0, 2rem, 500);
+        position: absolute;
+        z-index: 1;
+        top: 33%;
+        left: 50%;
+        transform: translate(-50%, -32%);
+    }
+}
+
+//contact section//
+.contact .wrapper {
+    height: 100%;
+    align-items: flex-start;
+    .textContainer {
+        height: 100%;
+        width: 47.5%;
+    }
+    .contactContainer li {
+        @include flexStyle(flex, column, space-between, flex-start);
+        @include boxModel(auto, auto, 2.75rem 0 2.75rem 3rem, none, none, 0 0 3rem 0);
+        border-left: 10px solid $plantGreen;
+        box-shadow: $boxShadow;         
+        h3 {
+            padding-bottom: 0.5rem;
+        }
+    }
+    form {
+        text-align: center;
+        padding: 3rem;
+        box-shadow: $boxShadow;         
+        .line1and2 {
+            flex-wrap: wrap;
+            input[type=text] {
+                @include boxModel(48%, auto, 1rem, $borderInput, 6px, 0 0 2rem 0);
+            }
+        }
+        .line3 input[type=text],
+        textarea {
+            @include boxModel(100%, auto, 1rem, $borderInput, 6px, 0 0 2rem 0);
+        }
+        input[type=text],
+        textarea {
+            outline: none;
+            &:focus {
+                border: 2px solid $lightgreen;
+            }
+            &::placeholder {
+                font-size: 0.9rem;
+            }
+        }
+    }
+    button {
+        @include boxModel(auto, auto, 1.75rem 2.25rem, none, 2.25rem, none);
+        font-size: 1rem;
+    }
+}
