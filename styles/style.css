@@ -709,6 +709,20 @@ button:hover {
     font-size: 0.75rem;
   }
 }
+.cartApp {
+  width: 350px;
+  height: 100vh;
+  background-color: rebeccapurple;
+  position: fixed;
+  top: 0;
+  right: -70%;
+  transition: 0.4s ease-in;
+}
+
+.cartApp.activated {
+  right: 0;
+}
+
 header nav {
   height: 10vh;
   position: relative;

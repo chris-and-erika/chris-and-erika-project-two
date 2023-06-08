@@ -1,0 +1,14 @@
+
+    .cartApp {
+      width: 350px;
+      height: 100vh;
+      background-color: rebeccapurple;
+      position: fixed;
+      top: 0;
+      right: -70%;
+      transition: 0.4s ease-in;
+    }
+
+    .cartApp.activated {
+      right: 0;
+    }
