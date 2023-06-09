@@ -8,12 +8,7 @@ body {
   margin: 0;
 }
 
-article,
-aside,
-footer,
-header,
-nav,
-section {
+article, aside, footer, header, nav, section {
   display: block;
 }
 
@@ -22,9 +17,7 @@ h1 {
   margin: 0.67em 0;
 }
 
-figcaption,
-figure,
-main {
+figcaption, figure, main {
   display: block;
 }
 
@@ -52,22 +45,18 @@ abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
-b,
-strong {
+b, strong {
   font-weight: inherit;
 }
 
-b,
-strong {
+b, strong {
   font-weight: bolder;
 }
 
-code,
-kbd,
-samp {
+code, kbd, samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
@@ -85,8 +74,7 @@ small {
   font-size: 80%;
 }
 
-sub,
-sup {
+sub, sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -101,8 +89,7 @@ sup {
   top: -0.5em;
 }
 
-audio,
-video {
+audio, video {
   display: inline-block;
 }
 
@@ -119,46 +106,31 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
+button, input, optgroup, select, textarea {
   font-family: sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
 }
 
-button,
-input {
+button, input {
   overflow: visible;
 }
 
-button,
-select {
+button, select {
   text-transform: none;
 }
 
-button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
+button, html [type=button], [type=reset], [type=submit] {
   -webkit-appearance: button;
 }
 
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -184,24 +156,21 @@ textarea {
   overflow: auto;
 }
 
-[type="checkbox"],
-[type="radio"] {
+[type=checkbox], [type=radio] {
   box-sizing: border-box;
   padding: 0;
 }
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type="search"] {
+[type=search] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
+[type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -210,8 +179,7 @@ textarea {
   font: inherit;
 }
 
-details,
-menu {
+details, menu {
   display: block;
 }
 
@@ -253,7 +221,7 @@ template {
   padding: 0;
   white-space: nowrap;
   -webkit-clip-path: inset(100%);
-  clip-path: inset(100%);
+          clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -262,7 +230,7 @@ html {
   font-family: "Barlow", sans-serif;
   font-size: 18px;
   font-weight: 400;
-  color: #1a2428;
+  color: #1A2428;
 }
 
 .wrapper {
@@ -316,14 +284,14 @@ ul {
 
 a {
   text-decoration: none;
-  color: #1a2428;
+  color: #1A2428;
 }
 
 img {
   width: 100%;
   height: auto;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .svg {
@@ -338,10 +306,10 @@ img {
   box-shadow: none;
   transition: all 0.25s;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .svg:hover {
-  background-color: #5ea85e;
+  background-color: #5EA85E;
 }
 
 .sectionHeading {
@@ -385,14 +353,13 @@ button {
 }
 
 button:hover {
-  background-color: #5ea85e;
+  background-color: #5EA85E;
   transition: all 0.25s;
   cursor: pointer;
 }
 
 .logo {
-  filter: invert(24%) sepia(77%) saturate(4208%) hue-rotate(79deg)
-    brightness(50%) contrast(101%);
+  filter: invert(24%) sepia(77%) saturate(4208%) hue-rotate(79deg) brightness(50%) contrast(101%);
 }
 
 .btnVar2 {
@@ -517,36 +484,35 @@ button:hover {
 .contact .wrapper form .line1and2 {
   flex-wrap: wrap;
 }
-.contact .wrapper form .line1and2 input[type="text"] {
+.contact .wrapper form .line1and2 input[type=text] {
   width: 48%;
   height: auto;
   padding: 1rem;
-  border: 1.5px solid #eaeaea;
+  border: 1.5px solid #EAEAEA;
   border-radius: 6px;
   margin: 0 0 2rem 0;
 }
-.contact .wrapper form .line3 input[type="text"],
+.contact .wrapper form .line3 input[type=text],
 .contact .wrapper form textarea {
   width: 100%;
   height: auto;
   padding: 1rem;
-  border: 1.5px solid #eaeaea;
+  border: 1.5px solid #EAEAEA;
   border-radius: 6px;
   margin: 0 0 2rem 0;
 }
-.contact .wrapper form input[type="text"],
+.contact .wrapper form input[type=text],
 .contact .wrapper form textarea {
   outline: none;
 }
-.contact .wrapper form input[type="text"]:focus,
+.contact .wrapper form input[type=text]:focus,
 .contact .wrapper form textarea:focus {
-  border: 2px solid #5ea85e;
+  border: 2px solid #5EA85E;
 }
-.contact .wrapper form input[type="text"]::-moz-placeholder,
-.contact .wrapper form textarea::-moz-placeholder {
+.contact .wrapper form input[type=text]::-moz-placeholder, .contact .wrapper form textarea::-moz-placeholder {
   font-size: 0.9rem;
 }
-.contact .wrapper form input[type="text"]::placeholder,
+.contact .wrapper form input[type=text]::placeholder,
 .contact .wrapper form textarea::placeholder {
   font-size: 0.9rem;
 }
@@ -616,10 +582,10 @@ button:hover {
     width: 80%;
     margin-bottom: 1rem;
   }
-  footer .wrapper .fourth .division form input[type="text"]::-moz-placeholder {
+  footer .wrapper .fourth .division form input[type=text]::-moz-placeholder {
     text-align: center;
   }
-  footer .wrapper .fourth .division form input[type="text"]::placeholder {
+  footer .wrapper .fourth .division form input[type=text]::placeholder {
     text-align: center;
   }
 }
@@ -722,7 +688,7 @@ button:hover {
   .line1and2 {
     flex-direction: column;
   }
-  .contact .wrapper form .line1and2 input[type="text"] {
+  .contact .wrapper form .line1and2 input[type=text] {
     width: 100%;
   }
 }
@@ -788,14 +754,14 @@ header nav .navHover a:focus {
   color: #207200;
 }
 header nav .navHover a.active {
-  color: #5ea85e;
+  color: #5EA85E;
   font-weight: 700;
 }
 header nav .navHover::after {
   content: "";
   height: 5px;
   width: 100%;
-  background-color: #5ea85e;
+  background-color: #5EA85E;
   position: absolute;
   left: 0;
   bottom: -1rem;
@@ -812,7 +778,7 @@ header nav .navHover:hover::after {
 }
 .hamburgerContainer .hamburger {
   font-size: 1.5rem;
-  color: #1a2428;
+  color: #1A2428;
 }
 
 header {
@@ -899,7 +865,7 @@ header .hero .imageContainer img:hover {
   line-height: 2rem;
   text-transform: capitalize;
   text-decoration: none;
-  background-color: #5ea85e;
+  background-color: #5EA85E;
   color: #fff;
   box-shadow: none;
   width: auto;
@@ -926,7 +892,7 @@ header .hero .imageContainer img:hover {
   width: 100%;
   height: auto;
   padding: 0.75rem;
-  border: 1.5px solid #eaeaea;
+  border: 1.5px solid #EAEAEA;
   border-radius: none;
   margin: none;
   background-color: #fff;
@@ -986,7 +952,7 @@ header .hero .imageContainer img:hover {
 }
 .blog .blogPost {
   background-color: #fff;
-  color: #1a2428;
+  color: #1A2428;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
   width: 32%;
   height: auto;
@@ -1055,7 +1021,7 @@ header .hero .imageContainer img:hover {
   transition: all 0.25s;
 }
 .second nav ul a:hover {
-  color: #5ea85e;
+  color: #5EA85E;
   font-weight: 600;
 }
 
@@ -1088,22 +1054,22 @@ header .hero .imageContainer img:hover {
   padding-top: 0.5rem;
   width: 100%;
 }
-.fourth form input[type="text"] {
+.fourth form input[type=text] {
   width: 100%;
   height: auto;
   padding: 1rem;
-  border: 1.5px solid #eaeaea;
+  border: 1.5px solid #EAEAEA;
   border-radius: 4px;
   margin: none;
   outline: none;
 }
-.fourth form input[type="text"]:focus {
-  border: 2px solid #5ea85e;
+.fourth form input[type=text]:focus {
+  border: 2px solid #5EA85E;
 }
-.fourth form input[type="text"]::-moz-placeholder {
+.fourth form input[type=text]::-moz-placeholder {
   font-size: 0.9rem;
 }
-.fourth form input[type="text"]::placeholder {
+.fourth form input[type=text]::placeholder {
   font-size: 0.9rem;
 }
 

@@ -57,21 +57,28 @@ const contShopEl = document.querySelector(".contShop");
 // toggle close the cartApp
 contShopEl.addEventListener("click", toggleCart);
 
+// whenever a user clicks any add to cart button, cartApp should open(toggle) *****
+// target the add to cart button and save it to a variable
+// query selectorAll to target all buttons
+// use forEach method, run a function(toggle) for each button
+
+const buttonCart = document.querySelectorAll(".buttonCart");
+
+buttonCart.forEach((buttonCart) => {
+  buttonCart.addEventListener("click", toggleCart);
+});
+
 // when the user clicks on the window outside of the cart, the cart should dissapear
-//
 
 // attatch an eventListener to the window
-window.addEventListener("click", function () {
-    if () {
-        // 3 conditons inside smooth brackets
-        
-        // if the cart is active
-        // if the user clicks outside of the cart you want the cartApp to close
-        // if the user is clicking anywhere on the screen that isnt the cartIcon
-
-
-        // exclude elements that activate the cart or keep the cart active
-        // all of these conditions need to met in order for our eventListener to work
-    }
+window.addEventListener("click", function (event) {
+  // if () {
+  // 3 conditons inside smooth brackets
+  // if the cart is active
+  // if the user clicks outside of the cart you want the cartApp to close
+  // if the user is clicking anywhere on the screen that isnt the cartIcon
+  // exclude elements that activate the cart or keep the cart active
+  // all of these conditions need to met in order for our eventListener to work
+  // }
   // run if statements with conditions
 });
