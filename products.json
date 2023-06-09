@@ -1,0 +1,76 @@
+{
+  "items": {
+    "item1": {
+      "id": "01",
+      "name": "Mixed salad",
+      "price": "19.99",
+      "description": "Organic tomato, lettuce and cucumber.",
+      "imgSrc": "./assets/product1.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item2": {
+      "id": "02",
+      "name": "Lime",
+      "price": "1.99",
+      "description": "California organic green limes.",
+      "imgSrc": "./assets/product2.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item3": {
+      "id": "03",
+      "name": "Green eggplant",
+      "price": "5.99",
+      "description": "Locally-grown organic green eggplant.",
+      "imgSrc": "./assets/product3.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item4": {
+      "id": "04",
+      "name": "Zucchini",
+      "price": "3.99",
+      "description": "Locally-grown organic zucchini.",
+      "imgSrc": "./assets/product4.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item5": {
+      "id": "05",
+      "name": "Snap peas",
+      "price": "6.99",
+      "description": "Locally-grown organic snap peas.",
+      "imgSrc": "./assets/product5.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item6": {
+      "id": "06",
+      "name": "Green olives",
+      "price": "8.99",
+      "description": "Organic castelvetrano olives.",
+      "imgSrc": "./assets/product6.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item7": {
+      "id": "07",
+      "name": "Green cabbage",
+      "price": "6.99",
+      "description": "Locally-grown organic cabbage.",
+      "imgSrc": "./assets/product7.jpeg",
+      "inCart": false,
+      "quantity": 0
+    },
+    "item8": {
+      "id": "08",
+      "name": "Boston lettuce",
+      "price": "7.99",
+      "description": "Hydroponic organic Boston lettuce.",
+      "imgSrc": "./assets/product8.jpeg",
+      "inCart": false,
+      "quantity": 0
+    }
+  }
+}

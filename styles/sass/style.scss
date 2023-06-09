@@ -18,6 +18,9 @@ header nav {
       all: revert;
       width: 1.75rem;
     }
+    li .cartIcon {
+      cursor: pointer;
+    }
   }
   .navHover {
     margin-right: 2rem;

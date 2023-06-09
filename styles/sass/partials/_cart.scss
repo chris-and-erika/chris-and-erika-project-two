@@ -1,10 +1,20 @@
 header {
+  // make smooth transiton to ease into the product section**** into the #shop
   .cartApp {
-    width: 350px;
+    width: 500px;
     height: 100vh;
     background-color: rebeccapurple;
     position: fixed;
     top: 0;
+    right: -40%;
+    transition: 0.5s ease-in;
+    z-index: 10;
+  }
+  .cartApp.activated {
     right: 0;
+  }
+  .closeCart {
+    cursor: pointer;
+    font-size: 2rem;
   }
 }
