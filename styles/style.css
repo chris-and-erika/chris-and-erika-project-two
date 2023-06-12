@@ -709,8 +709,10 @@ button:hover {
     font-size: 0.75rem;
   }
 }
+
 header .cartApp {
   width: 500px;
+
   height: 100vh;
   background-color: rebeccapurple;
   position: fixed;
@@ -726,6 +728,7 @@ header .closeCart {
   cursor: pointer;
   font-size: 2rem;
 }
+
 
 header nav {
   height: 10vh;
