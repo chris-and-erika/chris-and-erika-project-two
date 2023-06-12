@@ -709,19 +709,26 @@ button:hover {
     font-size: 0.75rem;
   }
 }
-.cartApp {
-  width: 350px;
+
+header .cartApp {
+  width: 500px;
+
   height: 100vh;
   background-color: rebeccapurple;
   position: fixed;
   top: 0;
-  right: -70%;
-  transition: 0.4s ease-in;
+  right: -40%;
+  transition: 0.5s ease-in;
+  z-index: 10;
 }
-
-.cartApp.activated {
+header .cartApp.activated {
   right: 0;
 }
+header .closeCart {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
 
 header nav {
   height: 10vh;
@@ -737,6 +744,9 @@ header nav .wrapper ul {
 header nav .wrapper ul li .svg {
   all: revert;
   width: 1.75rem;
+}
+header nav .wrapper ul li .cartIcon {
+  cursor: pointer;
 }
 header nav .navHover {
   margin-right: 2rem;
