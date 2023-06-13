@@ -709,10 +709,24 @@ button:hover {
     font-size: 0.75rem;
   }
 }
+body .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.301);
+  z-index: 9;
+}
+body .overlay.activated {
+  display: block;
+}
+
 header .cartApp {
   width: 500px;
   height: 100vh;
-  background-color: rebeccapurple;
+  background-color: rgb(255, 255, 255);
   position: fixed;
   top: 0;
   right: -40%;
@@ -725,6 +739,13 @@ header .cartApp.activated {
 header .closeCart {
   cursor: pointer;
   font-size: 2rem;
+}
+header .fullCart {
+  display: none;
+}
+header .productsInCartContainer {
+  height: 30px;
+  background-color: red;
 }
 
 header nav {
