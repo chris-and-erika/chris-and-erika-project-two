@@ -52,8 +52,16 @@
         </div>
         <div class="cartApp">
             <p class="closeCart">X</p>
-            <p class="emptyMsg">Your cart is empty</p>
-            <a href="#shop" class="contShop">Continue Shopping</a>
+            <div class="emptyCart">
+                <p class="emptyMsg">Your cart is empty</p>
+                <a href="#shop" class="contShop">Continue Shopping</a>
+            </div>
+            <div class="fullCart">
+                <ul class="productsInCartContainer">
+                    <!-- render the cart items here dynamically -->
+                </ul>
+                <button>Checkout</button>
+            </div>
         </div>
     </header>
     <!-- end of header section -->

@@ -1,10 +1,29 @@
+body {
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.301);
+    z-index: 9;
+    // transition: 1s ease-in;
+    // fix this transition bug not working
+  }
+  .overlay.activated {
+    display: block;
+    // could also use display flex in some situation
+  }
+}
+
 header {
   // make smooth transiton to ease into the product section**** into the #shop
   // style the cartApp
   .cartApp {
     width: 500px;
     height: 100vh;
-    background-color: rebeccapurple;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     top: 0;
     right: -40%;
@@ -17,5 +36,12 @@ header {
   .closeCart {
     cursor: pointer;
     font-size: 2rem;
+  }
+  .fullCart {
+    display: none;
+  }
+  .productsInCartContainer {
+    height: 30px;
+    background-color: red;
   }
 }
