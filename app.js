@@ -4,6 +4,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebas
 import {
   getDatabase,
   ref,
+  get,
+  update,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,7 +22,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const dbRef = ref(database, "items");
+const dbRef = ref(database);
 
 console.log(dbRef);
 
@@ -107,15 +109,50 @@ window.addEventListener("click", function (event) {
 const buttonCartEl = document.querySelectorAll(".buttonCart");
 const emptyCartEl = document.querySelector(".emptyCart");
 const fullCartEl = document.querySelector(".fullCart");
+const inCartItems = [];
 
 buttonCartEl.forEach((buttonCart) => {
-  buttonCart.addEventListener("click", function () {
+  buttonCart.addEventListener("click", function (event) {
     toggleCart();
     emptyCartEl.style.display = "none";
     fullCartEl.style.display = "block";
+    const id = event.target.id;
+    console.log(id);
+    const itemId = `item${id}`;
+    console.log(itemId);
+
+    const childRef = ref(database, `items/${itemId}`);
+    get(childRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const itemData = snapshot.val();
+          // console.log(itemData);
+          const currentQty = itemData.quantity;
+          // console.log(currentQty);
+          const newQty = currentQty + 1;
+          // console.log(newQty);
+          inCartItems[itemId] = { ...itemData, quantity: newQty };
+          // console.log(inCartItems[itemId]);
+          // console.log(inCartItems);
+          update(childRef, {
+            inCart: true,
+            quantity: newQty,
+          });
+        } else {
+          console.log(`Item ${itemId} does not exist in the database.`);
+        }
+      })
+      .catch((error) => {
+        console.log("Error retrieving data:", error);
+      });
   });
-  // remove the cart empty p when mixed vegs is added to cartApp and the continueshopping p
-  // increment +1 to the cartIcon
-  // create a ul
-  // add the mixedvegs to the cart in a ul and show increment of +1
 });
+
+// ref is a function that takes two arguments, the first argument is the database that we want to access, the second argument is the path we want to take
+// the get function retrieves the data from firebase, the get function returns a promise, if the promise is fulfilled then wanna do something
+// if the snapshot exists we want to see it
+
+// remove the cart empty p when mixed vegs is added to cartApp and the continueshopping p
+// increment +1 to the cartIcon
+// create a ul
+// add the mixedvegs to the cart in a ul and show increment of +1
