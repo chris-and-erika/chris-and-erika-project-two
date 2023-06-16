@@ -709,6 +709,117 @@ button:hover {
     font-size: 0.75rem;
   }
 }
+body .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.301);
+  z-index: 9;
+}
+body .overlay.activated {
+  display: block;
+}
+
+header .cartApp {
+  width: 500px;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+  right: -40%;
+  transition: 0.5s ease-in;
+  z-index: 10;
+}
+header .cartApp.activated {
+  right: 0;
+}
+header .closeCart {
+  cursor: pointer;
+  font-size: 2rem;
+}
+header .emptyCart {
+  display: flex;
+  flex-direction: column;
+}
+header .fullCart {
+  display: none;
+}
+header .productInCartContainer {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  border-top: 1px solid gray;
+}
+header .productName {
+  color: black;
+}
+header .productInfoContainer {
+  padding-left: 1rem;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+header .productImage {
+  width: 30%;
+}
+header .productTextContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+header .productBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+header .qtyContainer {
+  display: flex;
+  width: 50%;
+}
+header .productQty {
+  padding: 0 1rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+}
+header .minusBtn,
+header .plusBtn {
+  all: revert;
+  background-color: black;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 15px;
+}
+header .trashIcon {
+  width: 50%;
+  text-align: right;
+}
+header .productsInCart {
+  border-bottom: 1px solid lightgray;
+}
+header .totalItemsInCart {
+  position: relative;
+}
+header .totalItems {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  border-radius: 15px;
+  background-color: green;
+  position: absolute;
+  top: -45px;
+  right: -5px;
+  color: white;
+}
+
 header nav {
   height: 10vh;
   position: relative;
@@ -723,6 +834,9 @@ header nav .wrapper ul {
 header nav .wrapper ul li .svg {
   all: revert;
   width: 1.75rem;
+}
+header nav .wrapper ul li .cartIcon {
+  cursor: pointer;
 }
 header nav .navHover {
   margin-right: 2rem;
@@ -941,131 +1055,6 @@ header .hero .imageContainer img:hover {
   margin: none;
 }
 .blog .blogPost .imageContainer {
-  width: 100%;
-}
-.blog .blogPost .imageContainer img {
-  border-radius: 4px;
-}
-.blog .blogPost .textContainer {
-  width: 100%;
-  height: auto;
-  padding: 1rem 0;
-  border: none;
-  border-radius: none;
-  margin: none;
-}
-.blog .blogPost .textContainer p {
-  padding: 1rem 0;
-}
-
-.footerCol {
-  width: 25%;
-  height: 42vh;
-  padding: none;
-  border: none;
-  border-radius: none;
-  margin: none;
-}
-.footerCol h3 {
-  padding-bottom: 2rem;
-  letter-spacing: 0.075rem;
-  line-height: 1.5rem;
-  text-transform: 0;
-  text-decoration: none;
-}
-
-.first {
-  padding-right: 2rem;
-}
-
-.imageContainer {
-  width: 60%;
-}
-
-.division {
-  justify-content: space-evenly;
-}
-.division nav ul li {
-  margin-right: 1rem;
-}
-
-.second {
-  padding-left: 1rem;
-}
-.second nav ul {
-  align-items: flex-start;
-  height: 100%;
-}
-.second nav ul a {
-  transition: all 0.25s;
-}
-.second nav ul a:hover {
-  color: #5EA85E;
-  font-weight: 600;
-}
-
-.third .imageContainer {
-  width: 33.3333333333%;
-}
-
-.third .textContainer {
-  width: 75%;
-  height: auto;
-  padding: 0 0 0 1rem;
-  border: none;
-  border-radius: none;
-  margin: none;
-}
-.third .textContainer p {
-  padding: 0.5rem 0;
-}
-.third .textContainer .item {
-  font-family: "Lora", serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0;
-}
-
-.fourth {
-  padding-left: 1.7rem;
-}
-.fourth form {
-  padding-top: 0.5rem;
-  width: 100%;
-}
-.fourth form input[type=text] {
-  width: 100%;
-  height: auto;
-  padding: 1rem;
-  border: 1.5px solid #EAEAEA;
-  border-radius: 4px;
-  margin: none;
-  outline: none;
-}
-.fourth form input[type=text]:focus {
-  border: 2px solid #5EA85E;
-}
-.fourth form input[type=text]::-moz-placeholder {
-  font-size: 0.9rem;
-}
-.fourth form input[type=text]::placeholder {
-  font-size: 0.9rem;
-}
-
-.footerImage {
-  font-size: 0;
-}
-
-.copyright {
-  background-color: #207200;
-  color: #fff;
-  box-shadow: none;
-  font-size: 0.75rem;
-  text-align: center;
-}
-.copyright a {
-  color: #fff;
-}geContainer {
   width: 100%;
 }
 .blog .blogPost .imageContainer img {
