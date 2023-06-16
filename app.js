@@ -76,13 +76,13 @@ contShopEl.addEventListener("click", toggleCart);
 // when the user clicks on the window outside of the cart, the cart should dissapear
 
 // attatch an eventListener to the window
-window.addEventListener("click", function (event) {
+window.addEventListener("click", function (e) {
   if (
     cartAppEl.classList.contains("activated") &&
     // if the cart is activated
-    !cartAppEl.contains(event.target) &&
+    !cartAppEl.contains(e.target) &&
     // if cartAppEl doesnt contain a click || if the user doesnt click inside the cart
-    !cartIconEl.contains(event.target) &&
+    !cartIconEl.contains(e.target) &&
     // if cartIconEl doesnt contain click
     ![...buttonCartEl].some((button) => button.contains(event.target))
     // ... is called a spread operator
@@ -112,11 +112,11 @@ const fullCartEl = document.querySelector(".fullCart");
 const inCartItems = [];
 
 buttonCartEl.forEach((buttonCart) => {
-  buttonCart.addEventListener("click", function (event) {
+  buttonCart.addEventListener("click", function (e) {
     toggleCart();
     emptyCartEl.style.display = "none";
     fullCartEl.style.display = "block";
-    const id = event.target.id;
+    const id = e.target.id;
     console.log(id);
     const itemId = `item${id}`;
     console.log(itemId);
@@ -138,6 +138,7 @@ buttonCartEl.forEach((buttonCart) => {
             inCart: true,
             quantity: newQty,
           });
+          renderCartItems(Object.values(inCartItems));
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -148,34 +149,124 @@ buttonCartEl.forEach((buttonCart) => {
   });
 });
 
-const productsInCartEl = document.querySelector('.productsInCart')
-
+const productsInCartEl = document.querySelector(".productsInCart");
 function renderCartItems(cartItemsArray) {
-  productsInCartEl.innerHTML = '';
-
+  productsInCartEl.innerHTML = "";
   cartItemsArray.forEach((item) => {
-    const productInCartContainer = document.createElement('li');
-      productInCartContainer.classList.add('productInCartContainer');
-      productInCartContainer.innerHTML = `
-        <img class="productImage" src="${item.imgSrc}" alt="${item.name}">
-        <div class="productInfoContainer">
-          <div class="productTextContainer">
-            <p class="productName">${item.name}</p>
-            <p class="productPrice">${item.price}</p>
-          </div>
-          <div class="productBtnContainer">
-            <div class="qtyContainer">
-              <button class="minusBtn" id="-${item.id}">-</button>
-              <p class="productQty">${item.quantity}</p>
-              <button class="plusBtn" id="+${item.id}">+</button>
-            </div>
-            <p class="trashIcon" id="$i{item.id}">Remove</p>
-          </div>
-        </div>
-      `;
-      productsInCartEl.appendChild(productInCartContainer);
-    });
-  }
+    const productInCartContainer = document.createElement("li");
+    productInCartContainer.classList.add("productInCartContainer");
+    productsInCartEl.append(productInCartContainer);
+
+    const img = document.createElement("img");
+    img.classList.add("productImage");
+    img.src = item.imgSrc;
+    productInCartContainer.append(img);
+
+    const productInfoContainer = document.createElement("div");
+    productInfoContainer.classList.add("productInfoContainer");
+    productInCartContainer.append(productInfoContainer);
+
+    const productTextContainer = document.createElement("div");
+    productTextContainer.classList.add("productTextContainer");
+    productInfoContainer.append(productTextContainer);
+
+    const productName = document.createElement("p");
+    productName.classList.add("productName");
+    productName.textContent = item.name;
+
+    productTextContainer.append(productName);
+
+    const productPrice = document.createElement("p");
+    productPrice.classList.add("productPrice");
+    productPrice.textContent = item.price;
+
+    productTextContainer.append(productPrice);
+
+    const productBtnContainer = document.createElement("div");
+    productBtnContainer.classList.add("productBtnContainer");
+    productInfoContainer.append(productBtnContainer);
+
+    const qtyContainer = document.createElement("div");
+    qtyContainer.classList.add("qtyContainer");
+    productBtnContainer.append(qtyContainer);
+
+    const minusBtn = document.createElement("button");
+    minusBtn.classList.add("minusBtn");
+    minusBtn.textContent = "-";
+    minusBtn.id = `-${item.id}`; // Use item ID in the button's ID attribute
+
+    qtyContainer.append(minusBtn);
+
+    const productQty = document.createElement("p");
+    productQty.classList.add("productQty");
+    productQty.textContent = item.quantity; // Update the quantity
+
+    qtyContainer.append(productQty);
+
+    const plusBtn = document.createElement("button");
+    plusBtn.classList.add("plusBtn");
+    plusBtn.textContent = "+";
+    plusBtn.id = `+${item.id}`; // Use item ID in the button's ID attribute
+
+    qtyContainer.append(plusBtn);
+
+    const trashIcon = document.createElement("p");
+    trashIcon.classList.add("trashIcon");
+    trashIcon.textContent = "Remove";
+    trashIcon.id = `i${item.id}`; // Set the ID attribute with the item ID
+
+    productBtnContainer.append(trashIcon);
+
+    // const productInCartContainer = document.createElement("li");
+    // productInCartContainer.classList.add("productInCartContainer");
+    // productInCartContainer.innerHTML = `
+    //         <img class="productImage" src="${item.imgSrc}" alt="${item.name}">
+    //         <div class="productInfoContainer">
+    //           <div class="productTextContainer">
+    //             <p class="productName">${item.name}</p>
+    //             <p class="productPrice">${item.price}</p>
+    //           </div>
+    //           <div class="productBtnContainer">
+    //             <div class="qtyContainer">
+    //               <button class="minusBtn" id="-${item.id}">-</button>
+    //               <p class="productQty">${item.quantity}</p>
+    //               <button class="plusBtn" id="+${item.id}">+</button>
+    //             </div>
+    //             <p class="trashIcon" id="$i{item.id}">Remove</p>
+    //           </div>
+    //         </div>
+    //       `;
+  });
+}
+
+// const productsInCartEl = document.querySelector(".productsInCart");
+
+// function renderCartItems(cartItemsArray) {
+//   productsInCartEl.innerHTML = "";
+
+//   cartItemsArray.forEach((item) => {
+//     const productInCartContainer = document.createElement("li");
+//     productInCartContainer.classList.add("productInCartContainer");
+//     productInCartContainer.innerHTML = `
+//         <img class="productImage" src="${item.imgSrc}" alt="${item.name}">
+//         <div class="productInfoContainer">
+//           <div class="productTextContainer">
+//             <p class="productName">${item.name}</p>
+//             <p class="productPrice">${item.price}</p>
+//           </div>
+//           <div class="productBtnContainer">
+//             <div class="qtyContainer">
+//               <button class="minusBtn" id="-${item.id}">-</button>
+//               <p class="productQty">${item.quantity}</p>
+//               <button class="plusBtn" id="+${item.id}">+</button>
+//             </div>
+//             <p class="trashIcon" id="$i{item.id}">Remove</p>
+//           </div>
+//         </div>
+//       `;
+//     productsInCartEl.appendChild(productInCartContainer);
+//   });
+// }
 
 // ref is a function that takes two arguments, the first argument is the database that we want to access, the second argument is the path we want to take
 // the get function retrieves the data from firebase, the get function returns a promise, if the promise is fulfilled then wanna do something

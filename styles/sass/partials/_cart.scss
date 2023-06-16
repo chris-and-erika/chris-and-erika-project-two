@@ -38,99 +38,96 @@ header {
     font-size: 2rem;
   }
   .emptyCart {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
 
   .fullCart {
-  display: none;
+    display: none;
   }
 
   .productInCartContainer {
-  background-color: white;
-  padding: 1rem;
-  display: flex;
-  border-top: 1px solid gray;
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    border-top: 1px solid gray;
   }
 
   .productName {
-  color: black;
+    color: black;
   }
 
   .productInfoContainer {
-  padding-left: 1rem;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    padding-left: 1rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .productImage {
-  width: 30%;
+    width: 30%;
   }
 
   .productTextContainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   .productBtnContainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   .qtyContainer {
-  display: flex;
-  width: 50%;
+    display: flex;
+    width: 50%;
   }
 
   .productQty {
-  padding: 0 1rem;
-  width: 2rem;
-  display: flex;
-  justify-content: center;
+    padding: 0 1rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
   }
 
   .minusBtn,
   .plusBtn {
-  all: revert;
-  background-color: black;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  border: 15px;
+    all: revert;
+    background-color: black;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: 15px;
   }
 
   .trashIcon {
-  width: 50%;
-  text-align: right;
+    width: 50%;
+    text-align: right;
   }
 
   .productsInCart {
-  border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
   }
 
   .totalItemsInCart {
-  position: relative;
+    position: relative;
   }
 
   .totalItems {
-  width: 25px;
-  height: 25px;
-  display: flex;
-  justify-content: center;
-  border: none;
-  border-radius: 15px;
-  background-color: green;
-  position: absolute;
-  top: -45px;
-  right: -5px;
-  color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 15px;
+    background-color: green;
+    position: absolute;
+    top: -45px;
+    right: -5px;
+    color: white;
   }
-
 }
-
-
