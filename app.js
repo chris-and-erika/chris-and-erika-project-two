@@ -148,6 +148,35 @@ buttonCartEl.forEach((buttonCart) => {
   });
 });
 
+const productsInCartEl = document.querySelector('.productsInCart')
+
+function renderCartItems(cartItemsArray) {
+  productsInCartEl.innerHTML = '';
+
+  cartItemsArray.forEach((item) => {
+    const productInCartContainer = document.createElement('li');
+      productInCartContainer.classList.add('productInCartContainer');
+      productInCartContainer.innerHTML = `
+        <img class="productImage" src="${item.imgSrc}" alt="${item.name}">
+        <div class="productInfoContainer">
+          <div class="productTextContainer">
+            <p class="productName">${item.name}</p>
+            <p class="productPrice">${item.price}</p>
+          </div>
+          <div class="productBtnContainer">
+            <div class="qtyContainer">
+              <button class="minusBtn" id="-${item.id}">-</button>
+              <p class="productQty">${item.quantity}</p>
+              <button class="plusBtn" id="+${item.id}">+</button>
+            </div>
+            <p class="trashIcon" id="$i{item.id}">Remove</p>
+          </div>
+        </div>
+      `;
+      productsInCartEl.appendChild(productInCartContainer);
+    });
+  }
+
 // ref is a function that takes two arguments, the first argument is the database that we want to access, the second argument is the path we want to take
 // the get function retrieves the data from firebase, the get function returns a promise, if the promise is fulfilled then wanna do something
 // if the snapshot exists we want to see it
