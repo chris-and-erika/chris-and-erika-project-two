@@ -51,16 +51,21 @@
             </div>
         </div>
         <div class="cartApp">
-            <p class="closeCart">X</p>
+            <i class="fa-solid fa-xmark closeCart"></i>
             <div class="emptyCart">
                 <p class="emptyMsg">Your cart is empty</p>
                 <a href="#shop" class="contShop">Continue Shopping</a>
             </div>
             <div class="fullCart">
+                <p class="yourCart">Your cart</p>
                 <ul class="productsInCart">
                     <!-- render the cart items here dynamically -->
                 </ul>
-                <button>Checkout</button>
+                <p class="clearTheCart">Clear all items</p>
+                <div class="checkoutContainer">
+                    <p>Sub-Total: $<span class="subTotal"></span></p>
+                    <button class="checkoutBtn">Checkout Now</button>
+                </div>
             </div>
         </div>
     </header>
@@ -100,7 +105,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$19.99</p>
                             <button class="buttonCart" id="1">Add to cart</button>
                         </div>
                     </li>
@@ -111,7 +116,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$1.99</p>
                             <button class="buttonCart" id="2">Add to cart</button>
                         </div>
                     </li>
@@ -122,7 +127,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$5.99</p>
                             <button class="buttonCart" id="3">Add to cart</button>
                         </div>
                     </li>
@@ -133,7 +138,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$3.99</p>
                             <button class="buttonCart" id="4">Add to cart</button>
                         </div>
                     </li>
@@ -144,7 +149,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$6.99</p>
                             <button class="buttonCart" id="5">Add to cart</button>
                         </div>
                     </li>
@@ -155,7 +160,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$8.99</p>
                             <button class="buttonCart" id="6">Add to cart</button>
                         </div>
                     </li>
@@ -166,7 +171,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
+                            <p class="price">$6.99</p>
                             <button class="buttonCart" id="7">Add to cart</button>
                         </div>
                     </li>
@@ -177,7 +182,7 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>                                
+                            <p class="price">$7.99</p>                                
                             <button class="buttonCart" id="8">Add to cart</button>
                         </div>
                     </li>
@@ -399,9 +404,7 @@
         </div>
         <p class="copyright">Coded by <a href="#">Erika David</a>. Copyright &#169 <a href="https://www.junocollege.com" target="_blank">Juno College</a>. All rights reserved.</p>
     </footer>
-    <script src="app.js" type="module">
-    </script>
     <!-- end of footer section -->
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
 </body>
 </html>

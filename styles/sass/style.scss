@@ -1,15 +1,18 @@
+@use "./partials/cart";
 @use "./partials/setup";
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 @use "./partials/reuseableCode";
 @use "./partials/contact";
 @use "./partials/mediaQueries";
-@use "./partials/cart";
 
 //nagivation section//
 header nav {
   height: 10vh;
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
   @include colors($white, 0, 0 0 8px rgba(0, 0, 0, 0.25));
   .wrapper ul {
     text-transform: uppercase;
@@ -63,7 +66,7 @@ header {
   height: 100vh;
   overflow: hidden;
   .hero {
-    height: 90vh;
+    height: 100vh;
     .textContainer {
       width: 50%;
       padding-right: 2rem;
@@ -135,7 +138,8 @@ header {
     .imageContainer {
       width: 100%;
       font-size: 0;
-    }
+      border: 1.5px solid $lightgrey;
+      }
     .textContainer {
       @include boxModel(
         100%,
