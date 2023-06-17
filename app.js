@@ -210,34 +210,21 @@ function renderCartItems(cartItemsArray) {
 
     qtyContainer.append(plusBtn);
 
-    const trashIcon = document.createElement("p");
-    trashIcon.classList.add("trashIcon");
-    trashIcon.textContent = "Remove";
-    trashIcon.id = `i${item.id}`; // Set the ID attribute with the item ID
+    const trashItem = document.createElement('p');
+    trashItem.classList.add('trashItem');
+    trashItem.textContent = "Remove ";
+    trashItem.id = `i${item.id}`; // Set the ID attribute with the item ID
 
-    productBtnContainer.append(trashIcon);
+    const trashIcon = document.createElement('i');
+    trashIcon.classList.add('fa-solid', 'fa-trash-can');
 
-    // const productInCartContainer = document.createElement("li");
-    // productInCartContainer.classList.add("productInCartContainer");
-    // productInCartContainer.innerHTML = `
-    //         <img class="productImage" src="${item.imgSrc}" alt="${item.name}">
-    //         <div class="productInfoContainer">
-    //           <div class="productTextContainer">
-    //             <p class="productName">${item.name}</p>
-    //             <p class="productPrice">${item.price}</p>
-    //           </div>
-    //           <div class="productBtnContainer">
-    //             <div class="qtyContainer">
-    //               <button class="minusBtn" id="-${item.id}">-</button>
-    //               <p class="productQty">${item.quantity}</p>
-    //               <button class="plusBtn" id="+${item.id}">+</button>
-    //             </div>
-    //             <p class="trashIcon" id="$i{item.id}">Remove</p>
-    //           </div>
-    //         </div>
-    //       `;
+    trashItem.appendChild(trashIcon);
+
+    productBtnContainer.append(trashItem);
   });
 }
+
+//alternate way to render the products to the page dynamically
 
 // const productsInCartEl = document.querySelector(".productsInCart");
 
