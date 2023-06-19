@@ -116,29 +116,32 @@ buttonCartEl.forEach((buttonCart) => {
     toggleCart();
     emptyCartEl.style.display = "none";
     fullCartEl.style.display = "block";
-    const id = e.target.id;
-    console.log(id);
-    const itemId = `item${id}`;
-    console.log(itemId);
+    const itemId = e.target.id;
 
     const childRef = ref(database, `items/${itemId}`);
     get(childRef)
       .then((snapshot) => {
         if (snapshot.exists()) {
           const itemData = snapshot.val();
-          // console.log(itemData);
+          console.log(itemData);
           const currentQty = itemData.quantity;
           // console.log(currentQty);
           const newQty = currentQty + 1;
           // console.log(newQty);
-          inCartItems[itemId] = { ...itemData, quantity: newQty };
-          // console.log(inCartItems[itemId]);
-          // console.log(inCartItems);
-          update(childRef, {
-            inCart: true,
-            quantity: newQty,
-          });
-          renderCartItems(Object.values(inCartItems));
+          let existingItemIndex = inCartItems.findIndex(
+            (item) => item.id === itemId
+          );
+
+          if (existingItemIndex !== -1) {
+            inCartItems[existingItemIndex].quantity++;
+          } else {
+            const newItem = { ...itemData, quantity: newQty, id: itemId };
+            inCartItems.push(newItem);
+            console.log(newItem);
+          }
+
+          update(childRef, { inCart: true, quantity: newQty });
+          renderCartItems(inCartItems);
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -210,13 +213,13 @@ function renderCartItems(cartItemsArray) {
 
     qtyContainer.append(plusBtn);
 
-    const trashItem = document.createElement('p');
-    trashItem.classList.add('trashItem');
+    const trashItem = document.createElement("p");
+    trashItem.classList.add("trashItem");
     trashItem.textContent = "Remove ";
     trashItem.id = `i${item.id}`; // Set the ID attribute with the item ID
 
-    const trashIcon = document.createElement('i');
-    trashIcon.classList.add('fa-solid', 'fa-trash-can');
+    const trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa-solid", "fa-trash-can");
 
     trashItem.appendChild(trashIcon);
 
