@@ -141,6 +141,7 @@ buttonCartEl.forEach((buttonCart) => {
           update(childRef, { inCart: true, quantity: newQty });
           renderCartItems(inCartItems);
           calculateTotalItemsInCart(inCartItems);
+          calculateSubTotal(inCartItems);
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -252,6 +253,7 @@ function handleClick(e) {
       return;
     }
     calculateTotalItemsInCart(inCartItems);
+    calculateSubTotal(inCartItems);
     const childRef = ref(database, `items/${itemId}`);
     update(childRef, { quantity: item.quantity });
   }
@@ -270,6 +272,7 @@ function removeItemFromCart(itemId) {
     fullCartEl.style.display = "none";
   }
   calculateTotalItemsInCart(inCartItems);
+  calculateSubTotal(inCartItems);
   renderCartItems(inCartItems);
   const childRef = ref(database, `items/${itemId}`);
   update(childRef, { inCart: false, quantity: 0 });
@@ -301,6 +304,34 @@ function calculateTotalItemsInCart(inCartItems) {
     totalItemsInCart.style.display = "block";
   }
 }
+
+function calculateSubTotal(inCartItems) {
+  const subTotalEl = document.querySelector(".subTotal");
+  const subTotal = inCartItems.reduce(function (total, item) {
+    return total + item.quantity * item.price;
+  }, 0);
+  subTotalEl.textContent = subTotal.toFixed(2);
+}
+
+function clearAll() {
+  const clearAllEl = document.querySelector(".clearTheCart");
+  clearAllEl.addEventListener("click", function () {
+    if (inCartItems.length > 0) {
+      const clearToZero = document.querySelector(".totalItems");
+      fullCartEl.style.display = "none";
+      emptyCartEl.style.display = "flex";
+      clearToZero.style.display = "none";
+      clearToZero.textContent = "0";
+      for (let item in inCartItems) {
+        const itemId = inCartItems[item].id;
+        const childRef = ref(database, `items/${itemId}`);
+        update(childRef, { inCart: false, quantity: 0 });
+      }
+    }
+  });
+}
+
+clearAll();
 
 //alternate way to render the products to the page dynamically
 
