@@ -128,12 +128,10 @@ buttonCartEl.forEach((buttonCart) => {
           // console.log(currentQty);
           const newQty = currentQty + 1;
           // console.log(newQty);
-          let existingItemIndex = inCartItems.findIndex(
-            (item) => item.id === itemId
-          );
+          let index = inCartItems.findIndex((item) => item.id === itemId);
 
-          if (existingItemIndex !== -1) {
-            inCartItems[existingItemIndex].quantity++;
+          if (index !== -1) {
+            inCartItems[index].quantity++;
           } else {
             const newItem = { ...itemData, quantity: newQty, id: itemId };
             inCartItems.push(newItem);
@@ -142,6 +140,7 @@ buttonCartEl.forEach((buttonCart) => {
 
           update(childRef, { inCart: true, quantity: newQty });
           renderCartItems(inCartItems);
+          calculateTotalItemsInCart(inCartItems);
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -196,7 +195,7 @@ function renderCartItems(cartItemsArray) {
     const minusBtn = document.createElement("button");
     minusBtn.classList.add("minusBtn");
     minusBtn.textContent = "-";
-    minusBtn.id = `-${item.id}`; // Use item ID in the button's ID attribute
+    minusBtn.id = `${item.id}`; // Use item ID in the button's ID attribute
 
     qtyContainer.append(minusBtn);
 
@@ -209,14 +208,14 @@ function renderCartItems(cartItemsArray) {
     const plusBtn = document.createElement("button");
     plusBtn.classList.add("plusBtn");
     plusBtn.textContent = "+";
-    plusBtn.id = `+${item.id}`; // Use item ID in the button's ID attribute
+    plusBtn.id = `${item.id}`; // Use item ID in the button's ID attribute
 
     qtyContainer.append(plusBtn);
 
     const trashItem = document.createElement("p");
     trashItem.classList.add("trashItem");
     trashItem.textContent = "Remove ";
-    trashItem.id = `i${item.id}`; // Set the ID attribute with the item ID
+    trashItem.id = `${item.id}`; // Set the ID attribute with the item ID
 
     const trashIcon = document.createElement("i");
     trashIcon.classList.add("fa-solid", "fa-trash-can");
@@ -225,6 +224,82 @@ function renderCartItems(cartItemsArray) {
 
     productBtnContainer.append(trashItem);
   });
+}
+
+function handleClick(e) {
+  const itemId = e.target.id;
+  console.log(itemId);
+  const item = inCartItems.find((item) => item.id === itemId);
+  console.log(item);
+  const productQtyEl = e.target.parentElement.querySelector(".productQty");
+
+  if (item) {
+    if (e.target.classList.contains("plusBtn")) {
+      item.quantity++;
+      productQtyEl.textContent = item.quantity;
+    } else if (e.target.classList.contains("minusBtn")) {
+      item.quantity--;
+      productQtyEl.textContent = item.quantity;
+      if (item.quantity === 0) {
+        // productQtyEl.textContent = 0;
+        removeItemFromCart(itemId);
+        e.stopPropagation();
+        return;
+      }
+    } else if (e.target.classList.contains("trashItem")) {
+      removeItemFromCart(itemId);
+      e.stopPropagation();
+      return;
+    }
+    calculateTotalItemsInCart(inCartItems);
+    const childRef = ref(database, `items/${itemId}`);
+    update(childRef, { quantity: item.quantity });
+  }
+}
+
+function removeItemFromCart(itemId) {
+  const index = inCartItems.findIndex((item) => {
+    return item.id === itemId;
+  });
+
+  if (index !== -1) {
+    inCartItems.splice(index, 1);
+  }
+  if (inCartItems.length === 0) {
+    emptyCartEl.style.display = "flex";
+    fullCartEl.style.display = "none";
+  }
+  calculateTotalItemsInCart(inCartItems);
+  renderCartItems(inCartItems);
+  const childRef = ref(database, `items/${itemId}`);
+  update(childRef, { inCart: false, quantity: 0 });
+}
+
+productsInCartEl.addEventListener("click", function (e) {
+  if (
+    e.target.classList.contains("plusBtn") ||
+    e.target.classList.contains("minusBtn") ||
+    e.target.classList.contains("trashItem")
+  ) {
+    handleClick(e);
+  }
+});
+
+function calculateTotalItemsInCart(inCartItems) {
+  const totalItemsInCart = document.querySelector(".totalItemsInCart");
+  const totalItems = document.createElement("p");
+  totalItems.classList.add("totalItems");
+  totalItemsInCart.innerHTML = "";
+  totalItemsInCart.append(totalItems);
+  const totalQty = inCartItems.reduce(function (total, item) {
+    return total + item.quantity;
+  }, 0);
+  totalItems.textContent = totalQty;
+  if (totalQty === 0) {
+    totalItemsInCart.style.display = "none";
+  } else if (totalQty > 0) {
+    totalItemsInCart.style.display = "block";
+  }
 }
 
 //alternate way to render the products to the page dynamically
