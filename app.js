@@ -54,6 +54,7 @@ buttonCartEl.forEach((buttonCart) => {
           const itemData = snapshot.val();
           const currentQty = itemData.quantity;
           const newQty = currentQty + 1;
+          
           let index = inCartItems.findIndex((item) => item.id === itemId);
 
           if (index !== -1) {
@@ -136,9 +137,6 @@ function renderCartItems(cartItemsArray) {
     trashItem.classList.add("trashItem");
     trashItem.textContent = "Remove ";
     trashItem.id = `${item.id}`; // Set the ID attribute with the item ID
-    const trashIcon = document.createElement("i");
-    trashIcon.classList.add("fa-solid", "fa-trash-can");
-    trashItem.appendChild(trashIcon);
     productBtnContainer.append(trashItem);
   });
 }
