@@ -730,7 +730,7 @@ header .cartApp {
   position: fixed;
   overflow-y: scroll;
   top: 10vh;
-  right: -40%;
+  right: -100%;
   transition: 0.5s ease-in;
   z-index: 10;
   font-size: 0.9rem;
@@ -783,11 +783,12 @@ header .fullCart .yourCart {
 header .fullCart .clearTheCart {
   text-transform: uppercase;
   font-size: 0.75rem;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0.5rem auto;
   color: #5EA85E;
   text-decoration: underline;
   cursor: pointer;
-  text-align: right;
+  text-align: center;
+  width: 37%;
 }
 header .fullCart .checkoutContainer {
   width: calc(375px - 3rem);
@@ -912,6 +913,9 @@ header nav {
   color: 0;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 }
+header nav .wrapper {
+  padding: 0;
+}
 header nav .wrapper ul {
   text-transform: uppercase;
   font-weight: 600;
@@ -923,19 +927,19 @@ header nav .wrapper ul li .svg {
 header nav .wrapper ul li .cartIcon {
   cursor: pointer;
 }
-header nav .navHover {
+header nav .wrapper .navHover {
   margin-right: 2rem;
   position: relative;
 }
-header nav .navHover a:hover,
-header nav .navHover a:focus {
+header nav .wrapper .navHover a:hover,
+header nav .wrapper .navHover a:focus {
   color: #207200;
 }
-header nav .navHover a.active {
+header nav .wrapper .navHover a.active {
   color: #5EA85E;
   font-weight: 700;
 }
-header nav .navHover::after {
+header nav .wrapper .navHover::after {
   content: "";
   height: 5px;
   width: 100%;
@@ -947,14 +951,13 @@ header nav .navHover::after {
   transition: all 0.25s;
   pointer-events: none;
 }
-header nav .navHover:hover::after {
+header nav .wrapper .navHover:hover::after {
   opacity: 1;
 }
-
-.hamburgerContainer {
+header nav .hamburgerContainer {
   display: none;
 }
-.hamburgerContainer .hamburger {
+header nav .hamburgerContainer .hamburger {
   font-size: 1.5rem;
   color: #1A2428;
 }

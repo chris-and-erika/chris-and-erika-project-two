@@ -30,7 +30,7 @@ header {
     position: fixed;
     overflow-y: scroll;
     top: 10vh;
-    right: -40%;
+    right: -100%;
     transition: 0.5s ease-in;
     z-index: 10;
     font-size: 0.9rem;
@@ -83,11 +83,12 @@ header {
     .clearTheCart {
       text-transform: uppercase;
       font-size: 0.75rem;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0 0.5rem auto;
       color: $lightgreen;
       text-decoration: underline;
       cursor: pointer;
-      text-align: right;
+      text-align: center;
+      width: 37%;
     }
     .checkoutContainer {
       width: calc(375px - 3rem);
