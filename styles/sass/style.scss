@@ -1,3 +1,4 @@
+@use "./partials/cart";
 
 @use "./partials/setup";
 @use "./partials/variables" as *;
@@ -5,8 +6,6 @@
 @use "./partials/reuseableCode";
 @use "./partials/contact";
 @use "./partials/mediaQueries";
-@use "./partials/cart";
-
 
 
 //nagivation section//
