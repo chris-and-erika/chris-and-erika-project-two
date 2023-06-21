@@ -77,6 +77,10 @@ body {
       cursor: pointer;
       text-align: center;
       width: 37%;
+      transition: all 0.2s ease;
+      &:hover {
+        color: grey;
+      }
     }
     .checkoutContainer {
       width: calc(375px - 2rem);
@@ -160,11 +164,16 @@ body {
           }
         }
       }.trashItem {
-        width: 50%;
+        width: 30%;
         text-align: right;
         font-size: 0.8rem;
         color: $black;
+        transition: all 0.2s ease;
         cursor: pointer;
+        &:hover {
+          color: grey;
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -180,5 +189,20 @@ body {
     position: absolute;
     top: -45px;
     right: -5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cartApp {
+    width: 320px;
+    .fullCart .checkoutContainer {
+      width: calc(320px - 2rem);
+    }
+    .fullCart .productBtnContainer .qtyContainer {
+      width: 70%;
+    }
+    .fullCart .clearTheCart {
+      width: 40%;
+    }
   }
 }
