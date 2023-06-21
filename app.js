@@ -17,7 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const dbRef = ref(database);
+//const dbRef = ref(database);
 
 const bodyEl = document.querySelector("body");
 const overlayEl = document.createElement("div");
@@ -41,7 +41,7 @@ const contShopEl = document.querySelector(".contShop");
 
 contShopEl.addEventListener("click", toggleCart);
 
-window.addEventListener("click", function (e) {
+window.addEventListener("click", function(e) {
   if (
     cartAppEl.classList.contains("activated") &&
     !cartAppEl.contains(e.target) &&
@@ -52,13 +52,14 @@ window.addEventListener("click", function (e) {
   }
 });
 
+const inCartItems = [];
+
 const buttonCartEl = document.querySelectorAll(".buttonCart");
 const emptyCartEl = document.querySelector(".emptyCart");
 const fullCartEl = document.querySelector(".fullCart");
-const inCartItems = [];
 
 buttonCartEl.forEach((buttonCart) => {
-  buttonCart.addEventListener("click", function (e) {
+  buttonCart.addEventListener("click", function(e) {
     toggleCart();
     emptyCartEl.style.display = "none";
     fullCartEl.style.display = "block";
@@ -69,11 +70,8 @@ buttonCartEl.forEach((buttonCart) => {
       .then((snapshot) => {
         if (snapshot.exists()) {
           const itemData = snapshot.val();
-          console.log(itemData);
           const currentQty = itemData.quantity;
-          // console.log(currentQty);
           const newQty = currentQty + 1;
-          // console.log(newQty);
           let index = inCartItems.findIndex((item) => item.id === itemId);
 
           if (index !== -1) {
@@ -81,13 +79,10 @@ buttonCartEl.forEach((buttonCart) => {
           } else {
             const newItem = { ...itemData, quantity: newQty, id: itemId };
             inCartItems.push(newItem);
-            console.log(newItem);
           }
 
           update(childRef, { inCart: true, quantity: newQty });
-          renderCartItems(inCartItems);
-          calculateTotalItemsInCart(inCartItems);
-          calculatePrices(inCartItems)
+          updateCart();
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -99,7 +94,6 @@ buttonCartEl.forEach((buttonCart) => {
 });
 
 const productsInCartEl = document.querySelector(".productsInCart");
-
 function renderCartItems(cartItemsArray) {
   productsInCartEl.innerHTML = "";
   cartItemsArray.forEach((item) => {
@@ -123,13 +117,11 @@ function renderCartItems(cartItemsArray) {
     const productName = document.createElement("p");
     productName.classList.add("productName");
     productName.textContent = item.name;
-
     productTextContainer.append(productName);
 
     const productPrice = document.createElement("p");
     productPrice.classList.add("productPrice");
     productPrice.textContent = item.price;
-
     productTextContainer.append(productPrice);
 
     const productBtnContainer = document.createElement("div");
@@ -144,41 +136,33 @@ function renderCartItems(cartItemsArray) {
     minusBtn.classList.add("minusBtn");
     minusBtn.textContent = "-";
     minusBtn.id = `${item.id}`; // Use item ID in the button's ID attribute
-
     qtyContainer.append(minusBtn);
 
     const productQty = document.createElement("p");
     productQty.classList.add("productQty");
     productQty.textContent = item.quantity; // Update the quantity
-
     qtyContainer.append(productQty);
 
     const plusBtn = document.createElement("button");
     plusBtn.classList.add("plusBtn");
     plusBtn.textContent = "+";
     plusBtn.id = `${item.id}`; // Use item ID in the button's ID attribute
-
     qtyContainer.append(plusBtn);
 
     const trashItem = document.createElement("p");
     trashItem.classList.add("trashItem");
     trashItem.textContent = "Remove ";
     trashItem.id = `${item.id}`; // Set the ID attribute with the item ID
-
     const trashIcon = document.createElement("i");
     trashIcon.classList.add("fa-solid", "fa-trash-can");
-
     trashItem.appendChild(trashIcon);
-
     productBtnContainer.append(trashItem);
   });
 }
 
 function handleClick(e) {
   const itemId = e.target.id;
-  console.log(itemId);
   const item = inCartItems.find((item) => item.id === itemId);
-  console.log(item);
   const productQtyEl = e.target.parentElement.querySelector(".productQty");
 
   if (item) {
@@ -218,9 +202,7 @@ function removeItemFromCart(itemId) {
     emptyCartEl.style.display = "flex";
     fullCartEl.style.display = "none";
   }
-  renderCartItems(inCartItems);
-  calculateTotalItemsInCart(inCartItems);
-  calculatePrices(inCartItems)
+  updateCart()
   
   const childRef = ref(database, `items/${itemId}`);
   update(childRef, { inCart: false, quantity: 0 });
@@ -280,31 +262,32 @@ function clearTheCart() {
       emptyCartEl.style.display = "flex";
       fullCartEl.style.display = "none";
 
-      // Iterate over each item in the cart
       inCartItems.forEach((item) => {
         const id = item.id;
         const childRef = ref(database, `items/${id}`);
-        
-        // Update the quantity to 0 in Firebase
         update(childRef, { inCart: false, quantity: 0 });
 
-        // Update the quantity in the inCartItems array
         item.quantity = 0;
       });
 
-      // Update the total items to zero
       const clearToZero = document.querySelector('.totalItems');
       clearToZero.textContent = 0;
       clearToZero.style.display = "none";
 
-      // Clear the inCartItems array
       inCartItems.length = 0;
 
-      renderCartItems(inCartItems);
-      calculateTotalItemsInCart(inCartItems);
-      calculatePrices(inCartItems);
+      updateCart();
     }
   });
 }
 
 clearTheCart();
+
+function updateCart() {
+  renderCartItems(inCartItems);
+  calculateTotalItemsInCart(inCartItems);
+  calculatePrices(inCartItems);
+}
+
+
+
