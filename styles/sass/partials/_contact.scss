@@ -13,9 +13,10 @@
     position: relative;
     z-index: -1;
   }
-  h2 {
+  h1 {
     color: $white;
     text-transform: capitalize;
+    font-family: $secondaryFont;
     @include fontStyling(0, 2rem, 500);
     position: absolute;
     z-index: 1;

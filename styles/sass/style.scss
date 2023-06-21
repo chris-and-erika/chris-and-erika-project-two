@@ -1,10 +1,10 @@
-@use "./partials/cart";
 @use "./partials/setup";
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 @use "./partials/reuseableCode";
 @use "./partials/contact";
 @use "./partials/mediaQueries";
+@use "./partials/cart";
 
 //nagivation section//
 header nav {
@@ -14,7 +14,9 @@ header nav {
   width: 100%;
   z-index: 20;
   @include colors($white, 0, 0 0 8px rgba(0, 0, 0, 0.25));
-  .wrapper ul {
+  .wrapper {
+    padding: 0;
+    ul {
     text-transform: uppercase;
     font-weight: 600;
     li .svg {
@@ -59,6 +61,7 @@ header nav {
     font-size: 1.5rem;
     color: $black;
   }
+}
 }
 
 //header section//

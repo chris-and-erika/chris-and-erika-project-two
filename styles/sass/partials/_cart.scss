@@ -10,36 +10,26 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.301);
-    z-index: 9;
-    // transition: 1s ease-in;
-    // fix this transition bug not working
+    z-index: 9; 
   }
   .overlay.activated {
     display: block;
-    // could also use display flex in some situation
   }
 }
 
-header {
-  // make smooth transiton to ease into the product section**** into the #shop
-  // style the cartApp
-  .cartApp {
-    width: 375px;
-    height: 90vh;
-    background-color: $white;
-    position: fixed;
-    overflow-y: scroll;
-    top: 10vh;
-    right: -40%;
-    transition: 0.5s ease-in;
-    z-index: 10;
-    font-size: 0.9rem;
-    padding: 0 1rem 1rem 1rem;
-    border-top: 2px solid $lightgreen;
-  }
-  .cartApp.activated {
-    right: 0;
-  }
+.cartApp {
+  width: 375px;
+  height: 90vh;
+  background-color: $white;
+  position: fixed;
+  overflow-y: scroll;
+  top: 10vh;
+  right: -100%;
+  transition: 0.2s ease-in;
+  z-index: 10;
+  font-size: 0.9rem;
+  padding: 0 1rem 1rem 1rem;
+  border-top: 2px solid $lightgreen;
   .closeCart {
     font-size: 1.5rem;
     padding: 0.5rem 0;
@@ -55,8 +45,7 @@ header {
       padding: 1rem 0;
     }
     a {
-      background-color: $lightgreen;
-      color: $white;
+      @include colors($lightgreen, $white, none);
       text-transform: uppercase;
       letter-spacing: 0.15rem;
       padding: 1rem 0;
@@ -69,7 +58,6 @@ header {
       }
     }
   }
-
   .fullCart {
     display: none;
     .yourCart {
@@ -83,30 +71,38 @@ header {
     .clearTheCart {
       text-transform: uppercase;
       font-size: 0.75rem;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0 0.5rem auto;
       color: $lightgreen;
       text-decoration: underline;
       cursor: pointer;
-      text-align: right;
+      text-align: center;
+      width: 37%;
+      transition: all 0.2s ease;
+      &:hover {
+        color: grey;
+      }
     }
     .checkoutContainer {
       width: calc(375px - 2rem);
       border-top: 1px solid $lightgrey;
+      padding-top: 3rem;
       p {
-        padding: 1rem 0;
         text-align: right;
+        padding: 0.25rem;
+      }
+      .total {
+        padding: 1rem 0;
+        border-top: 2px solid $lightgrey;
         font-weight: 500;
       }
       .checkoutBtn {
         all: revert;
-        background-color: $lightgreen;
-        color: $white;
+        @include colors($lightgreen, $white, none);
         border: none;
         width: 100%;
         padding: 1rem 0;
         text-transform: uppercase;
-        font-family: $primaryFont;
-        font-size: 1rem;
+        @include fontStyling($primaryFont, 1rem, 0);
         letter-spacing: 0.15rem;
         cursor: pointer;
         transition: all 0.5s;
@@ -115,97 +111,98 @@ header {
         }
       }
     }
-  }
+  }  
+}
+.cartApp.activated {
+  right: 0;
+}
 
-  .productInCartContainer {
-    background-color: $white;
-    padding: 1rem;
-    display: flex;
-    border: 1px solid $lightgrey;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
+.productInCartContainer {
+  @include boxModel(none, none, 1rem, 1px solid $lightgrey, 6px, 0 0 0.5rem 0);
+  background-color: $white;
+  display: flex;
+  .productImage {
+    width: 30%;
   }
-
-  .productName {
-    color: $black;
-  }
-
   .productInfoContainer {
     padding-left: 1rem;
     width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  .productImage {
-    width: 30%;
-  }
-
-  .productTextContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .productBtnContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .qtyContainer {
-    display: flex;
-    width: 50%;
-  }
-
-  .productQty {
-    padding: 0 1rem;
-    width: 2rem;
-    display: flex;
-    justify-content: center;
-    font-size: 0.8rem;
-  }
-
-  .minusBtn,
-  .plusBtn {
-    all: revert;
-    background-color: $lightgreen;
-    color: $white;
-    width: 25px;
-    height: 25px;
-    border-radius: 15px;
-    border: 15px;
-    transition: all 0.5s;
-    cursor: pointer;
-    &:hover {
-      background-color: $black;
+    .productTextContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .productName {
+        color: $black;
+      }
+    }
+    .productBtnContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .qtyContainer {
+        display: flex;
+        width: 50%;
+        .productQty {
+          padding: 0 1rem;
+          width: 2rem;
+          display: flex;
+          justify-content: center;
+          font-size: 0.8rem;
+        }
+        .minusBtn,
+        .plusBtn {
+          all: revert;
+          @include colors($lightgreen, $white, none);
+          @include boxModel(25px, 25px, none, 15px, 15px, none);
+          transition: all 0.5s;
+          cursor: pointer;
+          &:hover {
+            background-color: $black;
+          }
+        }
+      }.trashItem {
+        width: 30%;
+        text-align: right;
+        font-size: 0.8rem;
+        color: $black;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        &:hover {
+          color: grey;
+          text-decoration: underline;
+        }
+      }
     }
   }
+}
 
-  .trashItem {
-    width: 50%;
-    text-align: right;
-    font-size: 0.8rem;
-    color: $black;
-    cursor: pointer;
-  }
-
-  .totalItemsInCart {
-    position: relative;
-  }
-
+.totalItemsInCart {
+  position: relative;
   .totalItems {
-    width: 25px;
-    height: 25px;
+    @include colors($lightgreen, $white, none);
+    @include boxModel(25px, 25px, none, none, 15px, none);
     display: flex;
     justify-content: center;
-    border: none;
-    border-radius: 15px;
-    background-color: $lightgreen;
     position: absolute;
     top: -45px;
     right: -5px;
-    color: $white;
+  }
+}
+
+@media (max-width: 420px) {
+  .cartApp {
+    width: 320px;
+    .fullCart .checkoutContainer {
+      width: calc(320px - 2rem);
+    }
+    .fullCart .productBtnContainer .qtyContainer {
+      width: 70%;
+    }
+    .fullCart .clearTheCart {
+      width: 40%;
+    }
   }
 }
