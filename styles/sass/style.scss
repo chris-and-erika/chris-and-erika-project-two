@@ -1,12 +1,10 @@
 @use "./partials/cart";
-
 @use "./partials/setup";
 @use "./partials/variables" as *;
 @use "./partials/mixins" as *;
 @use "./partials/reuseableCode";
 @use "./partials/contact";
 @use "./partials/mediaQueries";
-
 
 //nagivation section//
 header nav {
