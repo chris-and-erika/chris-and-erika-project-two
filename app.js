@@ -1,23 +1,8 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
+import { app } from './firebase.js';
 import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyD3ns1VQvYSGOMuoyxUTUSWGNT5iR2TNzo",
-  authDomain: "practice-project-app-608de.firebaseapp.com",
-  projectId: "practice-project-app-608de",
-  storageBucket: "practice-project-app-608de.appspot.com",
-  messagingSenderId: "126461480563",
-  appId: "1:126461480563:web:ebdcf28a19991bf790e406"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-//const dbRef = ref(database);
+const dbRef = ref(database);
 
 const bodyEl = document.querySelector("body");
 const overlayEl = document.createElement("div");
@@ -26,6 +11,8 @@ bodyEl.appendChild(overlayEl);
 
 const cartIconEl = document.querySelector(".cartIcon");
 const cartAppEl = document.querySelector(".cartApp");
+const closeIconEl = document.querySelector(".closeCart");
+const contShopEl = document.querySelector(".contShop");
 
 function toggleCart() {
   cartAppEl.classList.toggle("activated");
@@ -33,12 +20,7 @@ function toggleCart() {
 }
 
 cartIconEl.addEventListener("click", toggleCart);
-
-const closeIconEl = document.querySelector(".closeCart");
 closeIconEl.addEventListener("click", toggleCart);
-
-const contShopEl = document.querySelector(".contShop");
-
 contShopEl.addEventListener("click", toggleCart);
 
 window.addEventListener("click", function(e) {
@@ -46,7 +28,7 @@ window.addEventListener("click", function(e) {
     cartAppEl.classList.contains("activated") &&
     !cartAppEl.contains(e.target) &&
     !cartIconEl.contains(e.target) &&
-    ![...buttonCartEl].some((button) => button.contains(event.target))
+    ![...buttonCartEl].some((button) => button.contains(e.target))
   ) {
     toggleCart();
   }
@@ -104,6 +86,7 @@ function renderCartItems(cartItemsArray) {
     const img = document.createElement("img");
     img.classList.add("productImage");
     img.src = item.imgSrc;
+    img.alt = item.description; // Replace with your desired alt text
     productInCartContainer.append(img);
 
     const productInfoContainer = document.createElement("div");
@@ -179,12 +162,13 @@ function handleClick(e) {
         return;
       }
     } else if (e.target.classList.contains("trashItem")) {
-      removeItemFromCart(itemId);
-      e.stopPropagation();
-      return;
+        removeItemFromCart(itemId);
+        e.stopPropagation();
+        return;
     }
     calculateTotalItemsInCart(inCartItems);
     calculatePrices(inCartItems)
+
     const childRef = ref(database, `items/${itemId}`);
     update(childRef, { quantity: item.quantity });
   }
@@ -202,13 +186,13 @@ function removeItemFromCart(itemId) {
     emptyCartEl.style.display = "flex";
     fullCartEl.style.display = "none";
   }
-  updateCart()
+  updateCart();
   
   const childRef = ref(database, `items/${itemId}`);
   update(childRef, { inCart: false, quantity: 0 });
 }
 
-productsInCartEl.addEventListener("click", function (e) {
+productsInCartEl.addEventListener("click", function(e) {
   if (
     e.target.classList.contains("plusBtn") ||
     e.target.classList.contains("minusBtn") ||
