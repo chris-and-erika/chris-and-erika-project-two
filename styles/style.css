@@ -12,7 +12,7 @@ body .overlay.activated {
   display: block;
 }
 
-header .cartApp {
+.cartApp {
   width: 375px;
   height: 90vh;
   background-color: #fff;
@@ -20,33 +20,31 @@ header .cartApp {
   overflow-y: scroll;
   top: 10vh;
   right: -100%;
-  transition: 0.5s ease-in;
+  transition: 0.2s ease-in;
   z-index: 10;
   font-size: 0.9rem;
   padding: 0 1rem 1rem 1rem;
   border-top: 2px solid #5EA85E;
 }
-header .cartApp.activated {
-  right: 0;
-}
-header .closeCart {
+.cartApp .closeCart {
   font-size: 1.5rem;
   padding: 0.5rem 0;
   color: rgb(157, 157, 157);
   cursor: pointer;
 }
-header .emptyCart {
+.cartApp .emptyCart {
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-header .emptyCart p {
+.cartApp .emptyCart p {
   padding: 1rem 0;
 }
-header .emptyCart a {
+.cartApp .emptyCart a {
   background-color: #5EA85E;
   color: #fff;
+  box-shadow: none;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
   padding: 1rem 0;
@@ -55,13 +53,13 @@ header .emptyCart a {
   transform: background-color 0.5s;
   cursor: pointer;
 }
-header .emptyCart a:hover {
+.cartApp .emptyCart a:hover {
   background-color: #1A2428;
 }
-header .fullCart {
+.cartApp .fullCart {
   display: none;
 }
-header .fullCart .yourCart {
+.cartApp .fullCart .yourCart {
   background-color: #EAEAEA;
   padding: 1rem;
   text-align: center;
@@ -69,7 +67,7 @@ header .fullCart .yourCart {
   letter-spacing: 0.15rem;
   margin-bottom: 0.5rem;
 }
-header .fullCart .clearTheCart {
+.cartApp .fullCart .clearTheCart {
   text-transform: uppercase;
   font-size: 0.75rem;
   margin: 0.5rem 0 0.5rem auto;
@@ -79,117 +77,133 @@ header .fullCart .clearTheCart {
   text-align: center;
   width: 37%;
 }
-header .fullCart .checkoutContainer {
-  width: calc(375px - 3rem);
+.cartApp .fullCart .checkoutContainer {
+  width: calc(375px - 2rem);
   border-top: 1px solid #EAEAEA;
   padding-top: 3rem;
 }
-header .fullCart .checkoutContainer p {
+.cartApp .fullCart .checkoutContainer p {
   text-align: right;
   padding: 0.25rem;
 }
-header .fullCart .checkoutContainer .total {
+.cartApp .fullCart .checkoutContainer .total {
   padding: 1rem 0;
   border-top: 2px solid #EAEAEA;
   font-weight: 500;
 }
-header .fullCart .checkoutContainer .checkoutBtn {
+.cartApp .fullCart .checkoutContainer .checkoutBtn {
   all: revert;
   background-color: #5EA85E;
   color: #fff;
+  box-shadow: none;
   border: none;
   width: 100%;
   padding: 1rem 0;
   text-transform: uppercase;
   font-family: "Barlow", sans-serif;
   font-size: 1rem;
+  font-weight: 0;
   letter-spacing: 0.15rem;
   cursor: pointer;
   transition: all 0.5s;
 }
-header .fullCart .checkoutContainer .checkoutBtn:hover {
+.cartApp .fullCart .checkoutContainer .checkoutBtn:hover {
   background-color: #1A2428;
 }
-header .productInCartContainer {
-  background-color: #fff;
+
+.cartApp.activated {
+  right: 0;
+}
+
+.productInCartContainer {
+  width: none;
+  height: none;
   padding: 1rem;
-  display: flex;
   border: 1px solid #EAEAEA;
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
+  background-color: #fff;
+  display: flex;
 }
-header .productName {
-  color: #1A2428;
+.productInCartContainer .productImage {
+  width: 30%;
 }
-header .productInfoContainer {
+.productInCartContainer .productInfoContainer {
   padding-left: 1rem;
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-header .productImage {
-  width: 30%;
-}
-header .productTextContainer {
+.productInCartContainer .productInfoContainer .productTextContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-header .productBtnContainer {
+.productInCartContainer .productInfoContainer .productTextContainer .productName {
+  color: #1A2428;
+}
+.productInCartContainer .productInfoContainer .productBtnContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-header .qtyContainer {
+.productInCartContainer .productInfoContainer .productBtnContainer .qtyContainer {
   display: flex;
   width: 50%;
 }
-header .productQty {
+.productInCartContainer .productInfoContainer .productBtnContainer .qtyContainer .productQty {
   padding: 0 1rem;
   width: 2rem;
   display: flex;
   justify-content: center;
   font-size: 0.8rem;
 }
-header .minusBtn,
-header .plusBtn {
+.productInCartContainer .productInfoContainer .productBtnContainer .qtyContainer .minusBtn,
+.productInCartContainer .productInfoContainer .productBtnContainer .qtyContainer .plusBtn {
   all: revert;
   background-color: #5EA85E;
   color: #fff;
+  box-shadow: none;
   width: 25px;
   height: 25px;
-  border-radius: 15px;
+  padding: none;
   border: 15px;
+  border-radius: 15px;
+  margin: none;
   transition: all 0.5s;
   cursor: pointer;
 }
-header .minusBtn:hover,
-header .plusBtn:hover {
+.productInCartContainer .productInfoContainer .productBtnContainer .qtyContainer .minusBtn:hover,
+.productInCartContainer .productInfoContainer .productBtnContainer .qtyContainer .plusBtn:hover {
   background-color: #1A2428;
 }
-header .trashItem {
+.productInCartContainer .productInfoContainer .productBtnContainer .trashItem {
   width: 50%;
   text-align: right;
   font-size: 0.8rem;
   color: #1A2428;
   cursor: pointer;
 }
-header .totalItemsInCart {
+
+.totalItemsInCart {
   position: relative;
 }
-header .totalItems {
+.totalItemsInCart .totalItems {
+  background-color: #5EA85E;
+  color: #fff;
+  box-shadow: none;
   width: 25px;
   height: 25px;
-  display: flex;
-  justify-content: center;
+  padding: none;
   border: none;
   border-radius: 15px;
-  background-color: #5EA85E;
+  margin: none;
+  display: flex;
+  justify-content: center;
   position: absolute;
   top: -45px;
   right: -5px;
-  color: #fff;
 }
 
 html {
