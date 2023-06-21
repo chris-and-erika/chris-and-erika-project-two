@@ -1,22 +1,17 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
-import {
-  getDatabase,
-  ref,
-  get,
-  update,
-} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDV3gdoViVgvimAhLcSIGRxUZDozEqUaEE",
-  authDomain: "projecttwo-c0556.firebaseapp.com",
-  projectId: "projecttwo-c0556",
-  storageBucket: "projecttwo-c0556.appspot.com",
-  messagingSenderId: "728769033976",
-  appId: "1:728769033976:web:42b7b50729f55c12652d0d",
+  apiKey: "AIzaSyD3ns1VQvYSGOMuoyxUTUSWGNT5iR2TNzo",
+  authDomain: "practice-project-app-608de.firebaseapp.com",
+  projectId: "practice-project-app-608de",
+  storageBucket: "practice-project-app-608de.appspot.com",
+  messagingSenderId: "126461480563",
+  appId: "1:126461480563:web:ebdcf28a19991bf790e406"
 };
 
 // Initialize Firebase
@@ -24,87 +19,38 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 
-console.log(dbRef);
-
-// Firebase ^^^^^
-
-// add an overlay to the body and create this overlay in JS
-// target body and store in var
-// create overlay element for body
-// add a class to the div
-// append overlay to the body
-
 const bodyEl = document.querySelector("body");
-
 const overlayEl = document.createElement("div");
-
 overlayEl.classList.add("overlay");
-
 bodyEl.appendChild(overlayEl);
 
-// when we click the cartIcon we want the cartApp to appear
-// we want to target the cartIcon and save it in a variable
-// to target an element on the DOM we use document.queryselector
-
 const cartIconEl = document.querySelector(".cartIcon");
-// target the cartApp and save it in variable
 const cartAppEl = document.querySelector(".cartApp");
-// define a function to toggle the cart
+
 function toggleCart() {
   cartAppEl.classList.toggle("activated");
   overlayEl.classList.toggle("activated");
 }
-// add an eventListener inside the eventListener we pass two things, we pass and event and a callback function
-cartIconEl.addEventListener("click", toggleCart);
-// display cartApp
-// if we use a class name we dont use a period before a class name
-// classList allow us to manipulate the css
 
-// when the cart app is open we want to target the X icon so that the cartApp closes and save the information in a variable
+cartIconEl.addEventListener("click", toggleCart);
+
 const closeIconEl = document.querySelector(".closeCart");
 closeIconEl.addEventListener("click", toggleCart);
-// toggle close the cartApp
-//   cartAppEl.classList.toggle("activated");
 
-// when the user clicks on the contShop the cartApp should close
-// target the continue shopping anchor and save it in a variable
 const contShopEl = document.querySelector(".contShop");
 
-// toggle close the cartApp
 contShopEl.addEventListener("click", toggleCart);
 
-// when the user clicks on the window outside of the cart, the cart should dissapear
-
-// attatch an eventListener to the window
 window.addEventListener("click", function (e) {
   if (
     cartAppEl.classList.contains("activated") &&
-    // if the cart is activated
     !cartAppEl.contains(e.target) &&
-    // if cartAppEl doesnt contain a click || if the user doesnt click inside the cart
     !cartIconEl.contains(e.target) &&
-    // if cartIconEl doesnt contain click
     ![...buttonCartEl].some((button) => button.contains(event.target))
-    // ... is called a spread operator
-    // if the user doesnt click on any of the buttons i want to toggle the cart
   ) {
     toggleCart();
   }
-  // if () {
-  // 3 conditons inside smooth brackets
-  // if the cart is active
-  // if the user clicks outside of the cart you want the cartApp to close
-  // if the user is clicking anywhere on the screen that isnt the cartIcon
-  // exclude elements that activate the cart or keep the cart active
-  // all of these conditions need to met in order for our eventListener to work
-  // }
-  // run if statements with conditions
 });
-
-// whenever a user clicks any add to cart button, cartApp should open(toggle) *****
-// target the add to cart button and save it to a variable
-// query selectorAll to target all buttons
-// use forEach method, run a function(toggle) for each button
 
 const buttonCartEl = document.querySelectorAll(".buttonCart");
 const emptyCartEl = document.querySelector(".emptyCart");
@@ -141,7 +87,7 @@ buttonCartEl.forEach((buttonCart) => {
           update(childRef, { inCart: true, quantity: newQty });
           renderCartItems(inCartItems);
           calculateTotalItemsInCart(inCartItems);
-          calculateSubTotal(inCartItems);
+          calculatePrices(inCartItems)
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -153,6 +99,7 @@ buttonCartEl.forEach((buttonCart) => {
 });
 
 const productsInCartEl = document.querySelector(".productsInCart");
+
 function renderCartItems(cartItemsArray) {
   productsInCartEl.innerHTML = "";
   cartItemsArray.forEach((item) => {
@@ -253,7 +200,7 @@ function handleClick(e) {
       return;
     }
     calculateTotalItemsInCart(inCartItems);
-    calculateSubTotal(inCartItems);
+    calculatePrices(inCartItems)
     const childRef = ref(database, `items/${itemId}`);
     update(childRef, { quantity: item.quantity });
   }
@@ -271,9 +218,10 @@ function removeItemFromCart(itemId) {
     emptyCartEl.style.display = "flex";
     fullCartEl.style.display = "none";
   }
-  calculateTotalItemsInCart(inCartItems);
-  calculateSubTotal(inCartItems);
   renderCartItems(inCartItems);
+  calculateTotalItemsInCart(inCartItems);
+  calculatePrices(inCartItems)
+  
   const childRef = ref(database, `items/${itemId}`);
   update(childRef, { inCart: false, quantity: 0 });
 }
@@ -294,10 +242,13 @@ function calculateTotalItemsInCart(inCartItems) {
   totalItems.classList.add("totalItems");
   totalItemsInCart.innerHTML = "";
   totalItemsInCart.append(totalItems);
+
   const totalQty = inCartItems.reduce(function (total, item) {
     return total + item.quantity;
   }, 0);
+
   totalItems.textContent = totalQty;
+
   if (totalQty === 0) {
     totalItemsInCart.style.display = "none";
   } else if (totalQty > 0) {
@@ -305,70 +256,55 @@ function calculateTotalItemsInCart(inCartItems) {
   }
 }
 
-function calculateSubTotal(inCartItems) {
+function calculatePrices(inCartItems) {
   const subTotalEl = document.querySelector(".subTotal");
+  const totalTaxEl = document.querySelector('.totalTax');
+  const totalPriceEl = document.querySelector('.totalPrice');
+
   const subTotal = inCartItems.reduce(function (total, item) {
     return total + item.quantity * item.price;
   }, 0);
+
+  const totalTax = subTotal * 0.13;
+  const totalPrice = subTotal + totalTax;
+
   subTotalEl.textContent = subTotal.toFixed(2);
+  totalTaxEl.textContent = totalTax.toFixed(2);
+  totalPriceEl.textContent = totalPrice.toFixed(2);
 }
 
-function clearAll() {
-  const clearAllEl = document.querySelector(".clearTheCart");
-  clearAllEl.addEventListener("click", function () {
+function clearTheCart() {
+  const clearAllEl = document.querySelector('.clearTheCart');
+  clearAllEl.addEventListener('click', function() {
     if (inCartItems.length > 0) {
-      const clearToZero = document.querySelector(".totalItems");
-      fullCartEl.style.display = "none";
       emptyCartEl.style.display = "flex";
-      clearToZero.style.display = "none";
-      clearToZero.textContent = "0";
-      for (let item in inCartItems) {
-        const itemId = inCartItems[item].id;
-        const childRef = ref(database, `items/${itemId}`);
+      fullCartEl.style.display = "none";
+
+      // Iterate over each item in the cart
+      inCartItems.forEach((item) => {
+        const id = item.id;
+        const childRef = ref(database, `items/${id}`);
+        
+        // Update the quantity to 0 in Firebase
         update(childRef, { inCart: false, quantity: 0 });
-      }
+
+        // Update the quantity in the inCartItems array
+        item.quantity = 0;
+      });
+
+      // Update the total items to zero
+      const clearToZero = document.querySelector('.totalItems');
+      clearToZero.textContent = 0;
+      clearToZero.style.display = "none";
+
+      // Clear the inCartItems array
+      inCartItems.length = 0;
+
+      renderCartItems(inCartItems);
+      calculateTotalItemsInCart(inCartItems);
+      calculatePrices(inCartItems);
     }
   });
 }
 
-clearAll();
-
-//alternate way to render the products to the page dynamically
-
-// const productsInCartEl = document.querySelector(".productsInCart");
-
-// function renderCartItems(cartItemsArray) {
-//   productsInCartEl.innerHTML = "";
-
-//   cartItemsArray.forEach((item) => {
-//     const productInCartContainer = document.createElement("li");
-//     productInCartContainer.classList.add("productInCartContainer");
-//     productInCartContainer.innerHTML = `
-//         <img class="productImage" src="${item.imgSrc}" alt="${item.name}">
-//         <div class="productInfoContainer">
-//           <div class="productTextContainer">
-//             <p class="productName">${item.name}</p>
-//             <p class="productPrice">${item.price}</p>
-//           </div>
-//           <div class="productBtnContainer">
-//             <div class="qtyContainer">
-//               <button class="minusBtn" id="-${item.id}">-</button>
-//               <p class="productQty">${item.quantity}</p>
-//               <button class="plusBtn" id="+${item.id}">+</button>
-//             </div>
-//             <p class="trashIcon" id="$i{item.id}">Remove</p>
-//           </div>
-//         </div>
-//       `;
-//     productsInCartEl.appendChild(productInCartContainer);
-//   });
-// }
-
-// ref is a function that takes two arguments, the first argument is the database that we want to access, the second argument is the path we want to take
-// the get function retrieves the data from firebase, the get function returns a promise, if the promise is fulfilled then wanna do something
-// if the snapshot exists we want to see it
-
-// remove the cart empty p when mixed vegs is added to cartApp and the continueshopping p
-// increment +1 to the cartIcon
-// create a ul
-// add the mixedvegs to the cart in a ul and show increment of +1
+clearTheCart();
