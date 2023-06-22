@@ -2,8 +2,8 @@ import { app } from './firebase.js';
 import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
 const database = getDatabase(app);
-const dbRef = ref(database);
 
+//TOGGLING THE CART.
 const bodyEl = document.querySelector("body");
 const overlayEl = document.createElement("div");
 overlayEl.classList.add("overlay");
@@ -34,6 +34,7 @@ window.addEventListener("click", function(e) {
   }
 });
 
+//ADDING ITEMS TO THE CART.
 const inCartItems = [];
 
 const buttonCartEl = document.querySelectorAll(".buttonCart");
@@ -76,6 +77,7 @@ buttonCartEl.forEach((buttonCart) => {
   });
 });
 
+//FUNCTION TO RENDER THE CART ITEMS.
 const productsInCartEl = document.querySelector(".productsInCart");
 function renderCartItems(cartItemsArray) {
   productsInCartEl.innerHTML = "";
@@ -141,6 +143,7 @@ function renderCartItems(cartItemsArray) {
   });
 }
 
+//FUNCTION FOR THE PLUS, MINUS, AND REMOVE BUTTONS.
 function handleClick(e) {
   const itemId = e.target.id;
   const item = inCartItems.find((item) => item.id === itemId);
@@ -172,6 +175,7 @@ function handleClick(e) {
   }
 }
 
+//FUNCTION TO REMOVE THE ITEM FROM THE CART.
 function removeItemFromCart(itemId) {
   const index = inCartItems.findIndex((item) => {
     return item.id === itemId;
@@ -200,6 +204,7 @@ productsInCartEl.addEventListener("click", function(e) {
   }
 });
 
+//FUNCTION TO CALCULATE THE TOTAL ITEMS IN CART.
 function calculateTotalItemsInCart(inCartItems) {
   const totalItemsInCart = document.querySelector(".totalItemsInCart");
   const totalItems = document.createElement("p");
@@ -220,6 +225,7 @@ function calculateTotalItemsInCart(inCartItems) {
   }
 }
 
+//FUNCTION TO CALCULATE SUBTOTAL, TAX, AND TOTAL PRICE. 
 function calculatePrices(inCartItems) {
   const subTotalEl = document.querySelector(".subTotal");
   const totalTaxEl = document.querySelector('.totalTax');
@@ -237,6 +243,7 @@ function calculatePrices(inCartItems) {
   totalPriceEl.textContent = totalPrice.toFixed(2);
 }
 
+//FUNCTION TO CLEAR ALL ITEMS FROM THE CART.
 function clearTheCart() {
   const clearAllEl = document.querySelector('.clearTheCart');
   clearAllEl.addEventListener('click', function() {
@@ -265,11 +272,45 @@ function clearTheCart() {
 
 clearTheCart();
 
+//FUNCTION TO UPDATE THE CART.
 function updateCart() {
   renderCartItems(inCartItems);
   calculateTotalItemsInCart(inCartItems);
   calculatePrices(inCartItems);
 }
+
+//FUNCTION TO DISPLAY ITEMS SAVED IN THE CART ON PAGE LOAD/REFRESH. 
+window.onload = function() {
+  const dbRef = ref(database, 'items');
+  get(dbRef)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        for (const itemId in data) {
+          const itemData = data[itemId];
+          if (itemData.inCart) {
+            inCartItems.push({ ...itemData, id: itemId });
+            emptyCartEl.style.display = "none";
+            fullCartEl.style.display = "block";
+          }
+        }
+        renderCartItems(inCartItems);
+        updateCart();
+      } else {
+        console.log('No items exist in the database.');
+      }
+    })
+    .catch((error) => {
+      console.log('Error retrieving data:', error);
+    });
+};
+
+
+
+
+
+
+
 
 
 

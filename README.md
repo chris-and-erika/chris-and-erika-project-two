@@ -4,16 +4,18 @@
 
 Paired programming project to integrate Firebase and a fully functioning cart app into a previously created multi-page e-store (design provided by Juno College). 
 
-## MVP:
+## MVP/Stretch Goals(SG)
 
 1. Uploaded JSON data to Firebase.
 2. A fully functioning cart app with the following features:
     - Display the number of items added to the cart.
     - Display the items the user has added to cart. 
-    - Plus and minus buttons to adjust quantity of the items in the cart. 
+    - Plus and minus buttons to adjust quantity of the items in the cart. (SG)
     - Remove an item from the cart.
-    - Remove all items from the cart. 
-    - Display sub total, tax, and final price. 
+    - Remove all items from the cart. (SG)
+    - Display subtotal.
+    - Display tax and final price. (SG)
+    - Display items saved in the cart on page load. (SG)
 
 ## Technical wins: 
 
@@ -22,7 +24,6 @@ Paired programming project to integrate Firebase and a fully functioning cart ap
 ## Technical challenges: 
 
 - Understanding Firebase and ensuring that all the functioninalities given to the cart are synced with the data. 
-- Not knowing how to display the data persisting in Firebase when user refreshed the page. Only on click of a product will the persisting data appear.  
 
 ## Design liberties taken: 
 
