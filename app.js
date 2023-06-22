@@ -4,7 +4,6 @@ import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasej
 const database = getDatabase(app);
 
 //TOGGLING THE CART.
-
 const bodyEl = document.querySelector("body");
 const overlayEl = document.createElement("div");
 overlayEl.classList.add("overlay");
@@ -35,7 +34,7 @@ window.addEventListener("click", function(e) {
   }
 });
 
-//ADDING ITEMS TO CART
+//ADDING ITEMS TO THE CART.
 const inCartItems = [];
 
 const buttonCartEl = document.querySelectorAll(".buttonCart");
@@ -176,6 +175,7 @@ function handleClick(e) {
   }
 }
 
+//FUNCTION TO REMOVE THE ITEM FROM THE CART.
 function removeItemFromCart(itemId) {
   const index = inCartItems.findIndex((item) => {
     return item.id === itemId;
@@ -243,7 +243,7 @@ function calculatePrices(inCartItems) {
   totalPriceEl.textContent = totalPrice.toFixed(2);
 }
 
-//FUNCTION TO CLEAR THE ITEMS FROM THE CART.
+//FUNCTION TO CLEAR ALL ITEMS FROM THE CART.
 function clearTheCart() {
   const clearAllEl = document.querySelector('.clearTheCart');
   clearAllEl.addEventListener('click', function() {
@@ -279,7 +279,7 @@ function updateCart() {
   calculatePrices(inCartItems);
 }
 
-//FUNCTION TO DISPLAY ITEMS SAVED IN CART ON PAGE REFRESH/LOAD. 
+//FUNCTION TO DISPLAY ITEMS SAVED IN THE CART ON PAGE LOAD/REFRESH. 
 window.onload = function() {
   const dbRef = ref(database, 'items');
   get(dbRef)
