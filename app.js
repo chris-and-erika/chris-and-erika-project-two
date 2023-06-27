@@ -89,7 +89,7 @@ function renderCartItems(cartItemsArray) {
     const img = document.createElement("img");
     img.classList.add("productImage");
     img.src = item.imgSrc;
-    img.alt = item.description; // Replace with your desired alt text
+    img.alt = item.description;
     productInCartContainer.append(img);
 
     const productInfoContainer = document.createElement("div");
@@ -121,24 +121,24 @@ function renderCartItems(cartItemsArray) {
     const minusBtn = document.createElement("button");
     minusBtn.classList.add("minusBtn");
     minusBtn.textContent = "-";
-    minusBtn.id = `${item.id}`; // Use item ID in the button's ID attribute
+    minusBtn.id = `${item.id}`; 
     qtyContainer.append(minusBtn);
 
     const productQty = document.createElement("p");
     productQty.classList.add("productQty");
-    productQty.textContent = item.quantity; // Update the quantity
+    productQty.textContent = item.quantity; 
     qtyContainer.append(productQty);
 
     const plusBtn = document.createElement("button");
     plusBtn.classList.add("plusBtn");
     plusBtn.textContent = "+";
-    plusBtn.id = `${item.id}`; // Use item ID in the button's ID attribute
+    plusBtn.id = `${item.id}`; 
     qtyContainer.append(plusBtn);
 
     const trashItem = document.createElement("p");
     trashItem.classList.add("trashItem");
     trashItem.textContent = "Remove ";
-    trashItem.id = `${item.id}`; // Set the ID attribute with the item ID
+    trashItem.id = `${item.id}`; 
     productBtnContainer.append(trashItem);
   });
 }
