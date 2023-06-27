@@ -89,7 +89,7 @@ function renderCartItems(cartItemsArray) {
     const img = document.createElement("img");
     img.classList.add("productImage");
     img.src = item.imgSrc;
-    img.alt = item.description;
+    img.alt = item.description; 
     productInCartContainer.append(img);
 
     const productInfoContainer = document.createElement("div");
@@ -157,7 +157,7 @@ function handleClick(e) {
       item.quantity--;
       productQtyEl.textContent = item.quantity;
       if (item.quantity === 0) {
-        // productQtyEl.textContent = 0;
+        productQtyEl.textContent = 0;
         removeItemFromCart(itemId);
         e.stopPropagation();
         return;
