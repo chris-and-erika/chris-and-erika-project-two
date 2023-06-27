@@ -1,7 +1,7 @@
 {
   "items": {
     "item1": {
-      "id": "01",
+      "id": "1",
       "name": "Mixed salad",
       "price": "19.99",
       "description": "Organic tomato, lettuce and cucumber.",
@@ -10,7 +10,7 @@
       "quantity": 0
     },
     "item2": {
-      "id": "02",
+      "id": "2",
       "name": "Lime",
       "price": "1.99",
       "description": "California organic green limes.",
@@ -19,7 +19,7 @@
       "quantity": 0
     },
     "item3": {
-      "id": "03",
+      "id": "3",
       "name": "Green eggplant",
       "price": "5.99",
       "description": "Locally-grown organic green eggplant.",
@@ -28,7 +28,7 @@
       "quantity": 0
     },
     "item4": {
-      "id": "04",
+      "id": "4",
       "name": "Zucchini",
       "price": "3.99",
       "description": "Locally-grown organic zucchini.",
@@ -37,7 +37,7 @@
       "quantity": 0
     },
     "item5": {
-      "id": "05",
+      "id": "5",
       "name": "Snap peas",
       "price": "6.99",
       "description": "Locally-grown organic snap peas.",
@@ -46,7 +46,7 @@
       "quantity": 0
     },
     "item6": {
-      "id": "06",
+      "id": "6",
       "name": "Green olives",
       "price": "8.99",
       "description": "Organic castelvetrano olives.",
@@ -55,7 +55,7 @@
       "quantity": 0
     },
     "item7": {
-      "id": "07",
+      "id": "7",
       "name": "Green cabbage",
       "price": "6.99",
       "description": "Locally-grown organic cabbage.",
@@ -64,7 +64,7 @@
       "quantity": 0
     },
     "item8": {
-      "id": "08",
+      "id": "8",
       "name": "Boston lettuce",
       "price": "7.99",
       "description": "Hydroponic organic Boston lettuce.",

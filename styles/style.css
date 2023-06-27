@@ -1073,7 +1073,7 @@ body .overlay.activated {
   text-transform: uppercase;
   font-size: 0.75rem;
   margin: 0.5rem 0 0.5rem auto;
-  color: #5EA85E;
+  color: #207200;
   text-decoration: underline;
   cursor: pointer;
   text-align: center;
@@ -1085,8 +1085,7 @@ body .overlay.activated {
   color: grey;
 }
 .cartApp .fullCart .checkoutContainer {
-  width: calc(375px - 2rem);
-  border-top: 1px solid #EAEAEA;
+  border-top: 3px dotted #EAEAEA;
   padding-top: 3rem;
 }
 .cartApp .fullCart .checkoutContainer p {
@@ -1216,7 +1215,7 @@ body .overlay.activated {
   width: 30%;
   text-align: right;
   font-size: 0.8rem;
-  color: #1A2428;
+  color: #207200;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   cursor: pointer;
