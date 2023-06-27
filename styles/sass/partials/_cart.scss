@@ -72,7 +72,7 @@ body {
       text-transform: uppercase;
       font-size: 0.75rem;
       margin: 0.5rem 0 0.5rem auto;
-      color: $lightgreen;
+      color: $plantGreen;
       text-decoration: underline;
       cursor: pointer;
       text-align: center;
@@ -83,8 +83,7 @@ body {
       }
     }
     .checkoutContainer {
-      width: calc(375px - 2rem);
-      border-top: 1px solid $lightgrey;
+      border-top: 3px dotted $lightgrey;
       padding-top: 3rem;
       p {
         text-align: right;
@@ -167,7 +166,7 @@ body {
         width: 30%;
         text-align: right;
         font-size: 0.8rem;
-        color: $black;
+        color: $plantGreen;
         transition: all 0.2s ease;
         cursor: pointer;
         &:hover {
