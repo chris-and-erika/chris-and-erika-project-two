@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/cdc49ed55f.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <title>Organic | Juno College Project One</title>
-    <link href="./styles/style.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
 </head>
 <body>
     <!-- beginning of header section -->
@@ -30,7 +30,10 @@
                         <a href="./contact.html">Contact</a>
                     </li>
                     <li>
-                        <img class="svg" src="./assets/icons/cart.svg" alt="Oreg shopping cart.">
+                        <img class="svg cartIcon" src="./assets/icons/cart.svg" alt="Oreg shopping cart.">
+                        <div class="totalItemsInCart">
+                            <!-- append here -->
+                        </div>
                     </li>
                 </ul>
                 <a class="hamburgerContainer" href="#">
@@ -48,6 +51,26 @@
                 <div class="imageContainer">
                     <img src="./assets/header/header.png" alt="Fresh organic papaya stuffed with berries on a plate.">
                 </div>                
+            </div>
+        </div>
+        <div class="cartApp">
+            <i class="fa-solid fa-xmark closeCart"></i>
+            <div class="emptyCart">
+                <p class="emptyMsg">Your cart is empty</p>
+                <a href="#shop" class="contShop">Continue Shopping</a>
+            </div>
+            <div class="fullCart">
+                <p class="yourCart">Your cart</p>
+                <ul class="productsInCart">
+                    <!-- render the cart items here dynamically -->
+                </ul>
+                <p class="clearTheCart">Clear all items</p>
+                <div class="checkoutContainer">
+                    <p>Subtotal: $<span class="subTotal"></span></p>
+                    <p>Tax (HST 13%): $<span class="totalTax"></span></p>
+                    <p class="total">Total: $<span class="totalPrice"></span></p>
+                    <button class="checkoutBtn">Checkout Now</button>
+                </div>
             </div>
         </div>
     </header>
@@ -87,8 +110,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$19.99</p>
+                            <button class="buttonCart" id="item1">Add to cart</button>
                         </div>
                     </li>
                     <li>
@@ -98,8 +121,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$1.99</p>
+                            <button class="buttonCart" id="item2">Add to cart</button>
                         </div>
                     </li>
                     <li>
@@ -109,8 +132,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$5.99</p>
+                            <button class="buttonCart" id="item3">Add to cart</button>
                         </div>
                     </li>
                     <li>
@@ -120,8 +143,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$3.99</p>
+                            <button class="buttonCart" id="item4">Add to cart</button>
                         </div>
                     </li>
                     <li>
@@ -131,8 +154,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$6.99</p>
+                            <button class="buttonCart" id="item5">Add to cart</button>
                         </div>
                     </li>
                     <li>
@@ -142,8 +165,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$8.99</p>
+                            <button class="buttonCart" id="item6">Add to cart</button>
                         </div>
                     </li>
                     <li class="hide">
@@ -153,8 +176,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>
-                            <button>Add to cart</button>
+                            <p class="price">$6.99</p>
+                            <button class="buttonCart" id="item7">Add to cart</button>
                         </div>
                     </li>
                     <li class="hide">
@@ -164,8 +187,8 @@
                         <div class="textContainer">
                             <h3>Mix Vegetables</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <p class="price">$370 <span>$350</span></p>                                
-                            <button>Add to cart</button>
+                            <p class="price">$7.99</p>                                
+                            <button class="buttonCart" id="item8">Add to cart</button>
                         </div>
                     </li>
                 </ul>
@@ -387,5 +410,6 @@
         <p class="copyright">Coded by <a href="#">Erika David</a>. Copyright &#169 <a href="https://www.junocollege.com" target="_blank">Juno College</a>. All rights reserved.</p>
     </footer>
     <!-- end of footer section -->
+    <script type="module" src="./app.js"></script>
 </body>
 </html>

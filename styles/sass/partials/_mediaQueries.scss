@@ -1,6 +1,16 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
+@media (max-width: 1190px) {
+    .contact .wrapper {
+        height: 100%;
+        flex-direction: column;
+        .textContainer {
+            @include boxModel(80%, auto, none, none, none, 0 auto);
+        }
+    }
+}
+
 @media (max-width: 940px) {
     .sectionHeading p {
         width: 85%;
@@ -10,13 +20,6 @@
     }
     .hide {
         display: none;
-    }
-    .contact .wrapper {
-        height: 100%;
-        flex-direction: column;
-        .textContainer {
-            @include boxModel(80%, auto, none, none, none, 0 auto);
-        }
     }
     footer .wrapper {
         flex-wrap: wrap;
