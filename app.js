@@ -1,26 +1,16 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
+
+import { app } from "./firebase.js";
+
 import {
   getDatabase,
   ref,
   get,
   update,
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDV3gdoViVgvimAhLcSIGRxUZDozEqUaEE",
-  authDomain: "projecttwo-c0556.firebaseapp.com",
-  projectId: "projecttwo-c0556",
-  storageBucket: "projecttwo-c0556.appspot.com",
-  messagingSenderId: "728769033976",
-  appId: "1:728769033976:web:42b7b50729f55c12652d0d",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 
@@ -84,7 +74,7 @@ window.addEventListener("click", function (e) {
     // if cartAppEl doesnt contain a click || if the user doesnt click inside the cart
     !cartIconEl.contains(e.target) &&
     // if cartIconEl doesnt contain click
-    ![...buttonCartEl].some((button) => button.contains(event.target))
+    ![...buttonCartEl].some((button) => button.contains(e.target))
     // ... is called a spread operator
     // if the user doesnt click on any of the buttons i want to toggle the cart
   ) {
@@ -139,9 +129,7 @@ buttonCartEl.forEach((buttonCart) => {
           }
 
           update(childRef, { inCart: true, quantity: newQty });
-          renderCartItems(inCartItems);
-          calculateTotalItemsInCart(inCartItems);
-          calculateSubTotal(inCartItems);
+          updateCart();
         } else {
           console.log(`Item ${itemId} does not exist in the database.`);
         }
@@ -271,9 +259,7 @@ function removeItemFromCart(itemId) {
     emptyCartEl.style.display = "flex";
     fullCartEl.style.display = "none";
   }
-  calculateTotalItemsInCart(inCartItems);
-  calculateSubTotal(inCartItems);
-  renderCartItems(inCartItems);
+  updateCart();
   const childRef = ref(database, `items/${itemId}`);
   update(childRef, { inCart: false, quantity: 0 });
 }
@@ -313,25 +299,67 @@ function calculateSubTotal(inCartItems) {
   subTotalEl.textContent = subTotal.toFixed(2);
 }
 
-function clearAll() {
+// /FUNCTION TO CLEAR ALL ITEMS FROM THE CART.
+function clearTheCart() {
   const clearAllEl = document.querySelector(".clearTheCart");
   clearAllEl.addEventListener("click", function () {
     if (inCartItems.length > 0) {
-      const clearToZero = document.querySelector(".totalItems");
-      fullCartEl.style.display = "none";
       emptyCartEl.style.display = "flex";
-      clearToZero.style.display = "none";
-      clearToZero.textContent = "0";
-      for (let item in inCartItems) {
-        const itemId = inCartItems[item].id;
-        const childRef = ref(database, `items/${itemId}`);
+      fullCartEl.style.display = "none";
+
+      inCartItems.forEach((item) => {
+        const id = item.id;
+        const childRef = ref(database, `items/${id}`);
         update(childRef, { inCart: false, quantity: 0 });
-      }
+
+        //item.quantity = 0;
+      });
+
+      const clearToZero = document.querySelector(".totalItems");
+      clearToZero.textContent = 0;
+      clearToZero.style.display = "none";
+
+      inCartItems.length = 0;
+
+      updateCart();
     }
   });
 }
 
-clearAll();
+clearTheCart();
+
+//FUNCTION TO UPDATE THE CART.
+function updateCart() {
+  renderCartItems(inCartItems);
+  calculateTotalItemsInCart(inCartItems);
+  calculateSubTotal(inCartItems);
+}
+
+//FUNCTION TO DISPLAY ITEMS SAVED IN THE CART ON PAGE LOAD/REFRESH.
+window.onload = function () {
+  const dbRef = ref(database, "items");
+  get(dbRef)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        for (const itemId in data) {
+          const itemData = data[itemId];
+          if (itemData.inCart) {
+            inCartItems.push({ ...itemData, id: itemId });
+            emptyCartEl.style.display = "none";
+            fullCartEl.style.display = "block";
+          }
+        }
+        renderCartItems(inCartItems);
+        updateCart();
+      } else {
+        console.log("No items exist in the database.");
+      }
+    })
+    .catch((error) => {
+      console.log("Error retrieving data:", error);
+    });
+};
 
 //alternate way to render the products to the page dynamically
 
