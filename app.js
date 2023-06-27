@@ -185,7 +185,7 @@ function removeItemFromCart(itemId) {
     inCartItems.splice(index, 1);
   }
   if (inCartItems.length === 0) {
-    emptyCartEl.style.display = "flex";
+    emptyCartEl.style.display = "flex"; 
     fullCartEl.style.display = "none";
   }
   updateCart();
